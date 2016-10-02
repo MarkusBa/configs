@@ -1,0 +1,70 @@
+* Mysql workbench
+** Neue Keys - in nächste Zeile klicken
+* Maria db
+gibt es in 2 versionen? ubuntu
+* Sql
+** cascade set null !!
+** like hängt ab von ci oder binary collation
+** Comments are possible
+** more entities, because of type safety through indirection
+* Mssql 
+Direkt kopieren ohne java
+Immer executeUpdate in try catch
+
+** mssql 
+  check constraint für invarianten (unique über mehrere spalten)
+oder  computed column
+** nvarchar to varchar
+CAST( columnname AS varchar )
+** Fehler beim Konvertieren des nvarchar-Werts 'XX' in den bit-Datentyp.
+möglicherweise kein setString sondern setParameter nutzen
+sendStringParametersAsUnicode
+bis zu 8x langsamer
+
+** varbinary ist inkompatibel mit float (set Parameter nicht nutzen, sondern setDouble und null check)
+
+** falsche syntax in der nähe von
+- escapen
+** tabelle mit spalte finden
+SELECT COLUMN_NAME, TABLE_NAME 
+FROM INFORMATION_SCHEMA.COLUMNS 
+WHERE COLUMN_NAME LIKE '%MyName%'
+** vergleiche tabellen
+select c2.table_name,c2.COLUMN_NAME
+from [INFORMATION_SCHEMA].[COLUMNS] c2
+where table_name='Auftrag'
+and c2.COLUMN_NAME not in (select column_name 
+    from [INFORMATION_SCHEMA].[COLUMNS] 
+    where table_name='AuftragVor')
+** escapen : alles in [ ] setzen
+* Elasticsearch
+** &explain oder explain true
+** /cluster/type
+** _search?search_type=dfs_query_then_fetch
+** sortieren - not analyzed setzen für text
+** Tests
+http://stackoverflow.com/questions/21018493/how-to-access-aggregations-result-with-elasticsearch-java-api-in-searchresponse
+* Mysql-allgemein
+** sql diff per mysqlworkbench
+** ON DELETE CASCADE to Leave No Orphans!
+** http://dba.stackexchange.com/questions/44956/good-explanation-of-cascade-on-delete-update-behavior
+** restrict = no action
+** For consistency, the ON DELETE RESTRICT can be translated to the (less aggresive) You Can't Kill Parents! Only childless rows can be killed (deleted.)
+** mysqldump -hforeign -uusername -p schema > schema.sql
+** kann bulk insert
+** regex -> kein index möglich
+** purge binary logs before now()
+** stored
+#define a funny stored procedure...
+DELIMITER $$
+CREATE PROCEDURE slabel2(IN mylabel VARCHAR(255))
+LANGUAGE SQL
+NOT DETERMINISTIC
+SQL SECURITY DEFINER
+BEGIN
+  SELECT * FROM structure where label like concat('%', mylabel, '%');
+END$$
+
+** zu ändern: in conf.d mysql.conf
+** strace mysql 2>&1 | grep cnf      
+** welche configs genutzt strace -e trace=open mysqld

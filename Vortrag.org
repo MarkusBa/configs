@@ -1,0 +1,161 @@
+* Emacs
+** Emacs als portables "Betriebssytem"
+*** "Emacs is a refugee from the long dead culture of LispMachines. It's an asylum seeker in the UnixCulture"
+** Emacs als Elisp Interpreter
+** Emacs als Tiling Manager
+** Editor, implementiert u.a. durch Richard Stallman und Guy Steele, Jr.
+*** Richard Stallman (RMS), Gründer von Gnu
+*** Guy Steele, arbeitete u.a. an Scheme, Common Lisp und Java
+* Vorweg
+** Bin Emacs-Neuling
+** Daher kann es sein, dass es wichtigere Kommandos und Pakete gibt, als die die ich zeige 
+** Wie kann man zsh toppen?
+*** Eine Programmiersprachen-Repl (Read-Eval-Print-Loop) ist besser als die Shell
+etwa python, haskell, sbcl, php usw.
+*** Ein Betriebssystem, das fast nur aus einer Repl/einem Interpreter besteht, ist noch besser.
+* Vorteile
+** Pros
+*** Macht Spaß
+*** Einfach zu erweitern
+*** Fast komplett erweiterbar
+*** Synergieeffekte durch häufige Nutzung
+*** Viele gute Pakete 
+*** Damit langfristig(!) eine gute Umgebung 
+** Cons
+*** Erfordert Wissen
+*** IDEs, Browser etc. können manche Dinge besser
+*** Elisp ist nicht die beste Sprache für Paketentwickler 
+**** keine Namespaces
+**** mehr Polymorphie wünschenswert
+* Terminologie
+** Frame          : das was man sonst als Window kennt
+** Window         : ein Frame kann mehrere Windows enthalten
+** Buffer         : repräsentiert die gerade offene Datei
+** Mode           : Erweiterung - nur ein major mode kann aktiv sein, aber viele minor modes
+** M = Meta (Alt) : früher hatten Tastaturen zusätzlich eine Meta-Taste
+*** Space Cadet von Symbolics
+** C = Control (Strg)
+* Keycords
+** Tastenkürzel sind in Emacs Ketten von Tastenkürzeln, genannt Keycords
+** Bsp. C-x C-f öffnet Datei : Ctrl und x gedrückt halten, x loslassen , dann f drücken
+** Alternativ Ctrl und x drücken, dann Ctrl und f drücken
+* Wichtige Tastenkürzel
+** M-x     : Eingabe des Funktionsnamens, um die Funktion auszuführen
+* Weitere
+** C-x 1    : maximiert aktuellen Buffer
+** C-x b    : zum wechsel des Buffers
+** C-g      : Abbruch
+** C-h C-h  : Hilfe
+** Keybindings zur Navigation fast wie in der bash
+* Org-mode   : Um Dinge zu Organisieren / Notizen
+** Emacs killer app
+** Org-mode : ein Mode und eine Konvention für Dateien / Textformate 
+** Nutze ich bereits die ganze Zeit, um Text auszuklappen / zu kollabieren
+** Termine, TODOs uvm.
+* Shell-mode : Terminal-Ersatz
+** Spart Tipparbeit, leichteres editieren der vorangegangenen Kommandos
+** C-up, C-down
+** Pros
+*** shell als Buffer
+*** weniger zu tippen (?)
+*** unter Windows verwendbar
+** Cons
+1. Eshell is not a terminal emulator. It does not talk to a shell, for it is the shell. Everything it does – from displaying stuff on the screen, to fetching the contents of a directory – it does through Emacs, and Emacs in turn talks to your operating system.
+2. Because of the way Eshell talks to other processes (asynchronous ones especially) there may be issues with the way it buffers text and how interrupts work.
+3. Eshell does not support interactive (or “visual” in Eshell parlance) programs, like top, directly; you must tell Eshell to launch them in a separate ansi-term instance instead.
+4. It is not bash or zsh or even csh; do not treat it as such, even though it is heavily inspired by them. To use Eshell effectively you should treat it as if you are using a completely alien shell.
+* Dired-mode : "Midnight-Commander"
+** Zur Navigation im Dateisystem
+** m : markieren
+** u : Markierung aufheben, unmark
+** d : markieren zur Löschung, Deletion
+** q : quit
+* Kill-Ring 
+** Kill-Ring  : Liste von Textblöcken, die zuvor gekillt wurden
+**              oder auch Zwischenablage
+** killen
+"In Emacs, all commands will, with few exceptions
+like the two I mentioned above, kill text straight to
+your kill ring."
+** Es geht keine Information verloren!
+** Undo-Ring  : Selbst Undo ist eine Aktion, die gespeichert wird
+** C-a C-k
+* Macro-Ring
+** Macros aufnehmen (gespeichert im Macro-Ring)
+** Aufnehmen mit F3, Speichern und Abspielen mit F4
+* Elisp      : die Programmiersprache in Emacs
+** Präfix-Notation
+** C-x C-e : evaluiert ausdruck
+** (+ 1 42)
+** (+ 1 1 1 1) 
+** Bis auf einen Kern, der in C geschrieben ist, besteht Emacs aus Elisp
+** Elisp ist nicht Common Lisp, hat aber ähnliche Syntax und Namen
+* Elisp 2   
+** Variablen setzen       : (setq meine-variable 1)
+** Steht für "set quoted"
+*** (set 'meine-variable 42)
+*** quote verhindert die Evaluierung von code
+*** nötig, da das Symbol "meine-variable" noch nicht definiert ist.
+** Funktionen definieren  : 
+(defun meine-fun (x) 
+  (print (+ 1 x)))
+
+(meine-fun meine-variable) 
+** Funktionen 2
+(defun meine-fun2 (x)
+  (interactive "sParameter: ")
+  (print x))
+*** interactive, damit durch den Nutzer aufrufbar
+*** s ist ein Code für "String"
+* Cua-Mode   : Keybindings kompatibler zum Standard
+** Bei Cua-Mode : Ctrl-C, Ctrl-V, Ctrl-X wie gehabt
+** Beeinträchtigt Emacs, da die meisten Keycords mit C-c oder C-x beginnen 
+** C-c sind häufig Abkürzungen des aktuellen Modus, C-x globale
+* Konfiguration
+** .emacs   : Datei, die übrige Konfiguration einbindet
+** .emacs.d : Verzeichnis, in dem weitere Konfiguration und Pakete gespeichert werden
+** Verschiedene Repositories, etwa melpa und marmalade
+** Manche Distributionen führen Emacs-Pakete, etwa Nixos.
+* Ergonomie  : Möglichkeiten
+** Caps Lock und Strg tauschen
+** der Grund ist, dass man mit der Hand auf einer Zeile bleibt
+** Ergoemacs
+** God-Mode
+* Anderes
+** Kein Neustart nötig / bei Änderung an .emacs load-file ausführen
+** Autocomplete-Mode
+** Tramp     : Remote editing
+** Evil      : Für Vim-Nutzer
+** Erc       : Irc -Client
+** Magit     : Git-Integration
+** Ido-Mode  : Verbresserung der User-Experience
+** Sql-Mode  : Für Abfragen 
+** Conkeror  : Firefox mit Emacs-keybindings
+** Email
+*** Gnus
+*** Mu4e
+** Modes für Programmiersprachen
+** Und viel mehr!
+* Ressourcen
+** Mastering Emacs
+*** Bodil Stokke : "If you buy just one book this century, make it this!"
+** ergoemacs
+** Start-Pakete
+** https://sites.google.com/site/steveyegge2/effective-emacs
+** http://web.psung.name/emacstips/essential.html
+* Fazit
+** Emacs ist eine umfangreiche Arbeitsumgebung, die sich zu entdecken lohnt.
+** Wer länger am Rechner sitzt, sollte sich als Power-User betrachten.
+** Danke für eure Aufmerksamkeit!
+** Fragen?
+* Anhang
+** Save Place
+(require 'saveplace)
+(setq-default save-place t)
+** Mehr Kürzel
+*** Esc Esc Esc  : Abbruch
+** Emacs vs. Vim
+*** Mit Vim kann man wahrscheinlich schneller durch unstrukturierten Text navigieren und diesen editieren
+*** Wie oft hat man es mit unstruktiertem Text zu tun?
+*** Wahrscheinlich macht es auf lange Sicht mehr Sinn, den Editor zu wählen, der besser erweiterbar ist.
+  

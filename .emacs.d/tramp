@@ -1,0 +1,25 @@
+;; -*- emacs-lisp -*- <15/06/12 22:17:52 /home/markus/.emacs.d/tramp>
+;; Tramp connection history.  Don't change this file.
+;; You can delete it, forcing Tramp to reapply the checks.
+
+((["sudo" "root" "nixos.Speedport_W_921V_2_36_000" nil nil]
+  ("uname" "Linux 3.14.41")
+  ("test" "test")
+  ("remote-path"
+   ("/run/current-system/sw/bin" "/bin" "/usr/bin"))
+  ("remote-shell" "/bin/sh")
+  ("locale" "LC_ALL=en_US.utf8")
+  ("readlink" "/run/current-system/sw/bin/readlink")
+  ("stat" "/run/current-system/sw/bin/stat")
+  ("file-exists" "test -e")
+  ("id" "/run/current-system/sw/bin/id")
+  ("gid-integer" 0)
+  ("gid-string" "root")
+  ("uid-integer" 0)
+  ("perl-file-spec" t)
+  ("perl-cwd-realpath" t)
+  ("perl" "/run/current-system/sw/bin/perl")
+  ("tmpdir" "/sudo:root@nixos.Speedport_W_921V_2_36_000:/tmp")
+  ("touch-t" t)
+  ("touch" "/run/current-system/sw/bin/touch")
+  ("ls" "/run/current-system/sw/bin/ls --color=never")))

@@ -1,0 +1,11 @@
+* Pro/Con Nixos
+** Pro
+   stabil
+   rollbacks
+   pakete für emacs etc.
+** Con
+   waiting for ...
+   man kann nicht einfach dinge bauen
+   outdated
+   kleinere bugs (emacs,leksah,mysqlworkbench)
+   shell scripts

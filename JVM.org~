@@ -1,0 +1,29 @@
+* Jsp
+to find the generated java file, look under tomcat's work folder 
+
+** enums langsam
+property editor
+** i parameter müssen immer mit übergeben werden es sei denn sie wurden auf request scope geändert
+** requestScope.bla analogon fürs attribut
+** param.irgendwas bei jsp
+** += concat operator
+** default scope page, sucht in allen
+** jspkomponenten per include
+** alte version nicht kompatibel
+** kompiliert
+* Tomcat
+Importiert beim Start der entsprechenden VM die cacerts der underlying jvm
+
+killen - bootstrap jps 
+
+** reihenfolge der filter
+erst pattern 
+dann servlet name
+der reihenfolge nach
+
+http://stackoverflow.com/questions/17086712/servlet-filters-order-of-execution
+** wsfilter websockets
+** session geht verloren : https, persistent manager typo (2x)
+** docbase für hosting von statischen ordnern etc
+** work verzeichnis
+/home/barthlen/local/apache-tomcat-8.0.22/work/Catalina/localhost/payment_integration/reports

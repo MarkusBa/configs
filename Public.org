@@ -1,0 +1,1600 @@
+* Organisation
+** Nicht aufschieben!!
+** Downloads und Ziel-Ordner trennen, damit man sortieren muss
+* Diverses
+** programmierung = automatisierung
+** Sonnenbrand bei Fenster möglich trotz UVA
+** graved lachs = eingegrabener lachs
+** Kreisende Bewegungen beim Zähneputzen
+** kreditkarte kostet 66 euro oder so
+** Waschmaschine - hat Hebel unten
+** Wasserhahn 
+*** tropft - dichtung austauschen
+*** klemmt - dichtung aufschrauben
+** Teflon nicht in spülmaschine, von hand reinigen
+** Schuhe waschen - nicht wolle kalt, sondern seide fein (oder nur schleudern?), von 900 runter auf 600
+** Aral Tankstelle - Wäsche bis 20h samstags
+** Scss - auskompilieren irrelevanter teile von bootstrap
+** Scharfes essen - nicht ungesund
+** Desktop java app
+   nashorn + javafx
+** Apps mit bootstrap
+** warme getränke!
+** Sonatype für Continuous Integration
+** Essen
+   Gratin
+** Fruchttee
+   kein theein
+** suche nach worten
+3 like queries mit leerzeichen
+** Podcast den ich immer geguckt habe
+   Ehrensenf
+** Litfasssäulen
+   50-100 k
+** Kartoffeln
+   ohne Schale essen wg. schimmelmittel, solan
+** Hausboot
+   Auch nicht billiger, vllt. wohnwagen
+** Schlafen
+*** Rücken oder Seitenlage auf Ellenbogen
+** Avalon
+   Bösen mit x% chance
+   lancelot sieht die bösen indirekt, daher weiß er schon alles
+** Parkhaus
+   8,50 euro per night
+** Laufband
+   Endspurt!
+** Staubsaugen an tanke
+   Aral Staubsauger nimmt nur 50c
+** Matratze
+   Raumgewicht mindestens 45, hatte 60
+** Scanner
+   ltdl installiert
+   xsane
+   iscan data paket
+   iscan
+   iscan plugin
+   kabel überprüft
+** Parken - Seitenspiegel nutzen, um einzuordnen in Streifen
+** Parken im Bogen falls wenig platz
+** Ip v6
+ipv6 möglichst zusammenhängend, da router mit routing tabellen nicht klar kommen sonst
+** Mobil karte
+d1 netz über wegwerfkarte vom penny, congstar
+** Große terabyte-platten
+>2 tera: verschlüsselung vorhersagbar
+bei großen platten 4 tera gar keine partitionierung
+** Investment
+   I could invest in non-evil companies, but wouldn't they become evil when they become popular?
+** Donate to nixos
+http://nixos.org/nixos/foundation.html
+* Divers Programmierung
+** warum captchas
+captcha password dos
+** makro = kein first class code
+** Limit und offset bei mehrerern quellen
+   offset = discarded rows
+   immer abziehen
+
+   nur offset bei erster query
+   limit nur bei letzter query
+** Raspberry pi phone
+https://www.raspberrypi.org/blog/tytelli-a-diy-smartphone/
+raspberry pi nutzen statt mobiltelefon
+http://www.amazon.com/Pre-assembled-PiTFT-Mini-Kit-Touchscreen/dp/B00ID39LM4/ref=cm_cr_pr_product_top
+** Immer Kopplung beachten, auch zu implementationsdetails in der tieferen schicht (dbentitäten), evtl. interface(s)
+** keine klasse entity mit aggregaten/kompositionen/cascades
+Grund: die normalen klassen sollten das schon können!
+* html
+** image kann inline existieren, wie bei pdf
+* XML
+** browser namespaces
+https://developer.mozilla.org/en-US/docs/Web/SVG/Namespaces_Crash_Course
+* Docs generieren
+** Sphinx
+* Apache
+nginx besser als apache, nur mit event worker gut
+* APT
+bei problemen mit apt deinstallieren
+
+* Philosophisches
+** Warum kein Nix
+encryption, viel zu konfigurieren ...
+** Racket CPS
+** Yesod Problem mit größeren Dbs (und mehreren)
+** Restarts für Ressourcenprobleme
+** Free Monads gut für DSLs (oft benötigt?)
+** Problem mit Haskell
+Elastic Search, MSSQL, ORM, Soap
+** coding against a webservice, not the database!!!
+** meistens fachfehler
+
+** problem mit wiki - formulare, forum
+** wehret den anfängen
+** warum kein xmonad/nixos
+nixos keine vorteile, alte versionen haskell ? - trotzdem?
+xmonad keine maus?, evtl. mit gnome
+** es geht immer nur um macht, auch bei anarchy
+** support teil des it jobs
+** intelligenz = queue -> speicherung (auswertung von input)
+** frege - problem redundanz der typsignaturen (was wenn refactored wird?)
+** kein thunfisch essen
+** ubuntu kann cinnamon
+** bestes argument gegen demokratie 5 min. wähler gespräch
+** apple unnötig für programmierer da sie es gewohnt sind
+** wahl bis 65
+** zeitweise spezialisierung mit sprints
+** hair color blonde red
+http://www.brighthub.com/science/genetics/articles/15241.aspx
+** Nixos team scheint überfordert? release verschoben
+** politik: am wichtigsten ist kontrolle der macht. unabhängigkeit hilft auch nicht gegen gewalt
+** XML generieren
+** Sql hat probleme bei mehreren pfaden zur gleichen entität (manuell muss synchronisiert werden)
+** Ctrl+z gut an text
+** Bugs verhindern kann kaum gemessen werden
+** Knowledge driven development
+** poker
+reraise wenn man wenig hat evtl.
+** anarchie - medizin, straßen, umwelt, verbrechen
+** auch prozentuale beteiligung am gewinn bringt nichts
+** es existiert kein systemdenken
+** monad = local state, data hiding
+** schlecht an scala/kotlin: binary compatibilty, zu was kompilierte es, leserlichkeit? Andererseits kann man bei java magie auch das problem haben2
+** Problem mit linux smartphone = qualität der software/hardware
+** niedrige steuern, deswegen google so gut
+** never compromise, nur unabhängigkeit gut
+** männer = gene
+** armut schenken
+** nur wegen der politik auszuwandern (island oder so) ist lame
+** systemdenken
+** einfach zu testen, mehrere implementationen?
+Gute software braucht mehrere implementationen, a la scheme/lisp
+Muss aber auch leicht zu ändern sein, also scheme
+
+Code muss einfach zu testen sein, dies gilt nicht für webanwendungen und evtl. auch nicht für dbs?
+
+** listEditMForm :: [(String,Int)] -> Html -> MForm App App (FormResult [(FormResult Int, FormResult Text)], Widget) 
+** nixos hat zuviele fehler (waiting for 5 seconds) um rollback zu nutzen
+** haskell fehler by omission groß
+** haskell skaliert nicht
+** opensource > normal entwickeln
+** spenden sinnvoller als investieren
+** social engineering - mit geld locken
+** programmierung = auftragsarbeit?
+** bank gründen für 1 mio?
+** open source / nix: zu wenig entwickler
+** wildling philosophy - only the strong?
+Am besten: mehr kommunikation, mehr intelligenz
+Am zweitbesten: wildling philosophie
+*** mehr
+pro wildlings: was wenn sich herausstellt, dass macht verteilt werden muss/gegen den strom gearbeitet werden muss?
+               dynamischer
+               letzten endes ist sicherheit bedeutungslos, wenn man nichts mehr hat
+
+pro unsere gesellschaft: mehr sicherheit
+                         kurzfristig besser
+
+-> vllt. beides? nur mehr wildling elemente
+** motiviert gpl oder mit mehr?
+pro gpl: linux
+         eigentum verpflichtet
+         kettenreaktion -> evtl. noch mehr open source wg. viraler lizenz
+
+pro mit: firmen
+         vermutlich sinnvoller, wenn sich kaum jemand für den eigenen code interessiert und man sonst gar keine committer hat
+** schön an prolog - wenig redundanz
+** first class db / persistenz
+opa (was ist besser als yesod?)
+schlecht an dokument store
+prolog
+shen saving (geht wohl nicht), pico (keine semantik im code) , persistenz in haskell (funzt nicht wirklich beim durchsuchen)
+objekte was ist mit pflichtfeldern (wenn man das im typsystem haben will. Pflicht<Email> ?)
+
+https://checkout.springer.com/checkout/worldPaySuccess?4&orderKey=SPRINGER%5ESPRINGERGER%5E810000000424720&paymentStatus=AUTHORISED&paymentAmount=2429&paymentCurrency=EUR&mac=65ba8174e4e87550b8d34a01130da6e1&source=WP
+
+** xml = code in string attributes
+** Schlecht an eigenen entitätsklassen
+lazyexceptions
+listen 
+edit 
+ent 
+webservice
+alles extra gecoded
+
+keine schemaevolution speichern, history schlechter
+
+semantik fehlt
+** graphische programmierung = redundanz
+** haskell flexibler als php
+** 1 entität wegen
+xss
+control chars
+dates
+filter, listen, edit views etc
+typen = redundanz
+** mumble
+** Emoji variablen, graphische programmierung machen nicht so viel sinn - unlesbar
+** Beware forums, admins can read messages
+** Right tool for the right job
+** Persistent Collections Nutzen
+** Client-Server Architektur wg. nähe der Datenbank
+** Blackbox testen ist schlecht
+** In der Folgewoche nochmal drüber gucken über den Code
+** doku + konzentration > kanban
+** Intelligenz = Resonanz
+** prolog, haskell
+*** Haskell is complicated, but I hate runtime exceptions
+*** Prolog is the wrong tool for crud (foreign keys, permissions, history)
+** 13 months a year 28 days
+** sprachen
+opa - jetzt nicht so die vorteile gegenüber haskell
+scratch - spielzeug?
+scratch ist bullshit, opa auch nicht besser als haskell
+smalltalk - keine mehrfachvererbung?
+let over lambda (programmieren als selbstzweck...)
+** alternativen zu yesod
+-symfony
+
+?processwire
+cck und drupal
+
+drupal,processwire brauchen code, 500 bugs
+
+was ist mit drupal, spring roo, rails?
+spring roo outdated, nutze anfang des jahres nichtmal spring v4
+spring roo, modelliert many to many nicht sauber (wird nur von einer seite aus persistiert)
+rails - man muss letzten endes gems installieren für many to many und den webseiten code manuell anpassen
+sinatra unbeliebt
+drupal hat kein scaffolding
+GWT jede menge boilerplate
+** flat file database / better databases are nice, but concurrency problems, performance etc. suggest relational dbs
+** software should be priced accordingly, otherwise it might be considered a scam (too cheap)
+** datenstrukturen > code
+** text adventures
+** nur noch mahlzeiten im supermarkt kaufen, versus snacks
+** schätzungen: leichter unterschätzt als überschätzt
+** monads, damit expression orientiert
+** waffenexport/überfischung teuer, schlecht für weltmarkt
+** bank für arme
+** code der immer gültig sein wird = mathe, prolog?
+** jede funktion reversibel gestalten (bis auf http)
+** opensource, fun prog, doku sind meine ziele
+** if you are too verbose you might as well have said nothing
+** macht vermeiden
+** warum schauen wir zu, dass unsere machtstrukturen kaputt sind? Zuerst fixen?
+** gui - alles relational wie access (keine objekte)
+** philosophisch - geld alleine reicht nicht (leute mit geld denken, sie dürfen alles). geld und karma?
+** gui gestaltung: nur 1 bar
+** mehr lüften
+** Scala vs Haskell vs Ocaml
+*** nochmal
+ocaml: grund: typen verkomplizieren die dinge...
+(run.. in run.. in run.. ), monad stack vertauschen..
+monads sind eine dsl, ein holder von daten -> give me the data!
+problem auch: wie sieht bind bei persist, handler aus? show me the code
+symbole müssen in db sein. Grund println et. al.
+*** Rust - zu lowlevel ( man muss an unwichtige dinge denken, auch wenn die performance gut ist)
+*** Haskell = Obfuscation, aber die Tatsache, dass es in Scala unmöglich scheint, den Compiler umzubauen / Collections sollte ein Warnzeichen sein
+*** Fazit: Konzeptionell bevorzuge ich oo (einfacher, flexibler), aber keine vererbung, funprog sauberer
+oo macht es einem einfacher, sich in den fuß zu schießen
+*** Haskell als Lisp auffassen
+*** Monad Stacks und (Mehrfachvererbung) sind wohl beides nötige Übel?
+*** Haskell an der Grenze zu Overengineering, dafür aber sauberer
+*** Ocaml keine Typeclasses
+*** Dualität Scala besser in Multiple Inheritance, Haskell Typeclasses
+*** Scala = Basar, Haskell = Kathedrale
+*** Objektorientierung flexibler, andererseits läuft es auch auf Wissen hinaus
+*** Yesod aufgeräumt
+*** Scala macht zuviel mit Vererbung
+*** Ruby = Am Objektorientiertesten, aber kein static typing
+*** Haskell selbstgeißelung - persist ohne joins damals
+*** Scala bekannteres Ökosystem, higher kinds (besser als ocaml?)
+*** Typeclasses sind sauberer als Multiple inheritance
+Insgesamt ist Funkt Prog sauberer und mächtiger (undo)
+Allerdings ist Objektorientierung etwas flexibler in der modellierung
+*** Hypothese: wenn man yesod gut genug kennt und haskell, kann man am Ende
+doch alles modellieren so wie man möchte...
+*** Noch mehr
+Haskell - runErrorT um die Reihenfolge von Monadischen Werten zu vertauschen
+Manch einer würde sagen: Job security
+Der Grund ist, dass Haskell selbst noch ein Forschungsprojekt ist.
+Daher kann man noch nicht sagen, ob der Code (Monadtransformer stacks, lenses, yesod, mvar, tvar etc.) verständlich genug sein wird später.
+Grund zur Hoffnung - Mathe ist dazu da, damit Konzepte im Laufe der Zeit besser verstanden werden...
+In jedem Fall ist der Preis, dass das initiale Verständnis erschwert wird.
+Vllt. doch ocaml? oder gradual typing shen, groovy, clojure, racket
+ocaml - code duplizierung durch fehlen von type classes
+Optional typing ist käse (die bibliotheken selbst annotieren zu müssen)
+Andere statisch typisierte sprachen wie rust?
+Rust zu lowlevelig
+Ein Nachteil von Haskell ist: man kann es nicht dauerhaft benutzen ohne es zu verstehen...
+Wenn kein Haskell, dann noch am ehesten Clojure (oder Racket). Grund - clojure ist am beliebtesten, Racket netter für den Einsteiger vielleicht. Beide nicht ganz sauber.
+Grund: Syntax ist König
+Gabriel Gonzalez - Lens vs. typeclasses (functor)
+Ich bin mir noch nicht 100%ig sicher, ob DRY coding die Kopfschmerzen in Haskell immer rechtfertigt...
+** Code in der Datenbank
+Immernoch schlechte integration von query language und programmiersprache
+prolog et al haben aber den nachteil fehlender transaktionen
+
+Gefahren: lesen fremder daten, löschungen
+
+Simple <> Easy gilt auch hier
+** Statt Coworking in Bibliothek arbeiten?
+** Nur noch im Elektronikmarkt kaufen und nicht online?
+** geld macht erpressbar
+** computing finite state machines - gibt es, aber nichts bekanntes
+** scrum - prios sind alles
+** Dynamic typing
+since there is no model of the world in dyn languages, you don't need to learn it and it doesn't change
+dynamische sprachen - dispatch on type
+
+immer die neuesten features?
+bleeding edge?
+** Grundeinkommen
+** sprache = programmieren von menschen
+** crazy idea: kinder werden nur von anderen erzogen
+** open source ist etwas magisches - fremde leute verbessern deinen code :)
+** schnittstelle zu db, programmen über json
+** fpga / nativ java / lisp / smalltalk pc
+** immer backwards kompatibel bleiben wie bei sprache?
+** grundlage aller probleme -> alles zu c, in shell
+** Gui zuerst bauen, damit visualisierbar
+** Mehr javadocs schreiben
+** Release early
+** Beweise
+Typen beweisen nur, was man reinsteckt (Object)
+Einerseits idris erfolgreich
+andererseits code parse/edit?
+Finite state machine
+
+proving noch wichtiger als static typing wegen code generation?
+in haskell kann ich nur schwer code manipulieren
+allerdings ist eine künstliche sprache in einer sandbox sinnfrei...
+andererseits ist man bei side effects sowieso nicht typsicher!
+
+
+Indirection wie bei William Byrd -  Code as data für proofs
+in shen zu programmieren bringt kaum vorteile, allerdings javascript?
+** Speak as if you would be writing code
+** worker owned company better than public owned for competivity
+** Gutes Aussehen wichtig für Selbstbewusstsein
+** autos routen (ist das sinnvoll?)
+** maybe growth is the problem
+   if corporations are owned by people who seek growth more than quality/decency
+   you're gonna have a bad time
+** dezentralisierung!
+** lehren ist effektiv (effektiver als programmieren)
+   und kind-ersatz
+** aufräumen = glück
+** konzentration = lösung
+** internationale solidarität?
+** geduld
+** gemeingut ist alternativlos
+** gesellschaft muss veränderungen einfach machen, ob architekturell oder von den machtstrukturen her...
+** geld schlecht - erfunden um banker/staat zu finanzieren?
+** bezahlen mit schuldschein
+** geld führt zu kurzfristigen handlungen
+** Menschen = Verteilte Datenbanken + Mustervergleiche (equality-test += variablen änderungen)
+** leute über arbeit/ernsthafte hobbies am besten
+* Bugtracker
+Asana
+* Pagerank
+** google optimierung - sitemap, meta tag description nutzen, meta tag no index > robots, da auch on the fly interpretiert bei discovery, impressum nicht überall verlinken
+
+** meta tag no index > robots, impressum nicht folgen, keywords gibt es nicht mehr
+** Sitemap.xml
+** Immer verlinken (alte Seite zu neuer)
+** Nicht zuviel verlinken
+* Selenium
+http://www.qaautomation.net/?p=263
+* Browser
+** <meta name="robots" content="noindex, nofollow"/>
+** multipart
+nur in firefox zu sehen
+** ./ aktuelle seite
+** favicons: cache im .config/chromium/default/favion* löschen und browser neustarten
+** Schließen = Session close 
+* Gnumeric
+** Use it for excel over LibreOffice
+* Refactoring
+** Methode mit weniger Parametern! In neuen Typ!
+* Make
+** -include is an optional include
+* Http
+** CORS
+   options request annehmen
+   accept header setzen
+* Perl
+** use... not found : hash bang is not first line
+* PHP
+** docker
+https://tristan.lins.io/ docker setup mehrere php versionen
+** in php unter ubuntu muss kein loadModule sein, dafür gibt es die conf.d usw. ordner. Verwende a2enmod
+** laufen lassen
+mpm_prefork auch mit 5.6
+
+a2enmod für php version
+php.ini anpassen für include path
+ppa hinzufügen
+in php unter ubuntu muss kein loadModule sein, dafür gibt es die conf.d usw. ordner. Verwende a2enmod
+mods-enabled/php5.6.conf anpassen (damit in home verzeichnis ausgeführt)
+** symphony hat ein gutes entity modell, nur wenig code zur validierung
+** processwire
+many2many rückwärts, foreign keys?
+
+http://modules.processwire.com/modules/version-control/
+caches
+
+*** schlecht
+gast legt entität(en) an
+kopieren
+auslesen
+
+* XSS
+load javascript
+* C
+** const kann durch casts ignoriert werden, ist nur warnung?
+** * turn a pointer into a value, & turns a value into a pointer
+** call by reference als programmierer der methode
+entweder 
+
+void test(int x){
+  x = x * 2;
+}
+
+void test(int *x){
+ (*x) = (*x) *2;
+}
+
+oder (nur c++)
+void test (int& x){
+  x = x * 2;
+}
+
+Der Typ ist der gleiche ("int"), nur die Semantik ist anders...
+** char, as numbers signed char -127 to 127, unsigned char 0 255
+** void pointers can point to an address of any type
+** shared object files so ...
+** idris und postgres: libncursesw.so.5: cannot open shared object file: No such file or directory
+** terminating nul char nurbei strings
+** asterisk on the right because of int *a, b (b no pointer)
+** statically linked files smaller (less information what needed)
+* Adobe
+** pdf checkbox geht nicht
+exclgroup name
+* Javascript 
+** seite neu laden = window.location = ...
+** window close event
+window.setInterval(function() {if (win" + i+".closed
+
+** Compilieren nach Javascript - binär inkompatibel?
+** Noscript idee
+Entweder werbung und inhalt gleichzeitig nachladen
+Oder die inhaltsserver variieren von server1 bis 20 damit noscript nicht funzt
+* Design
+** Keine Tabellen in Tabellen, lieber Tabelle = Zeile
+* Tests
+** Datenbank
+   mock-test datensatz einfügen, testen, transaktion failen lassen
+* Re-frame
+** reactions anstelle von (get-in @db [:items]) 
+(reaction (get-in @db [:some :path :to :items]))
+und dann (reaction (sort-by @sort-attr @items))
+
+Dies ist günstiger
+
+(register-sub
+ :sorted-items             ;; the query id
+ (fn [db [_]]
+   (let [items      (reaction (get-in @db [:some :path :to :items]))]  ;; reaction #1
+         sort-attr  (reaction (get-in @db [:sort-by]))]                ;; reaction #2
+       (reaction (sort-by @sort-attr @items)))))    
+
+** dispatching events
+* Ascii
+ascii http://ascii.cl/
+* Zahlen rechtsbündig
+* Rest
+** rich hickeys bookshelf 
+http://www.amazon.com/gp/product/0201432943?ref_=cm_lmf_img_17 jvm spec - sehr technisch
+https://www.amazon.com/Java-Reflection-Action-In/dp/1932394184/ref=cm_lmf_tit_16 java refl in action - jetzt nicht so bahnbrechend
+http://www.amazon.com/gp/product/069111966X?ref_=cm_lmf_img_38 how to solve it - wohl auch nicht so bahnbrechend?
+** postman extension in chrome
+header: Content-Type application/json 
+send json raw
+** Debugging: achte auf slashes, logging anstellen
+** json zwischen [ und { leerzeichen
+* Andere Programmiersprachen
+** Apl/J
+ist nett, aber concise ist nicht alles und haskell...
+** Python
+pydatalog, arbeitet aber scheinbar in memory
+** Picolisp
++Klassenname
+{1} externes symbol, wie für DB
+(put *DB 'a 1)
+Alexander Burger
+** Shell
+Navigation mit ort='/home/markus/...' (keine spaces, darf scheinbar kein ~ enthalten)
+cd $ort
+** Typescript:
+Definitelytyped
+** Idris
+*** package installation
+idris --verbose --install sqlite.ipkg
+*** packages are installed under
+~/.cabal/share/x86_64-linux-ghc-7.10.1
+*** several packages as dependency:
+idris SQLiteTest.idr -o SQLiteTest -p sqlite -p effects
+*** "type inference" with _
+*** unique type - referrable only once
+*** with als view
+*** run führt aus
+*** universe for dsl
+*** helper return datatype for avl tree (key/value store)
+*** case works when getting dependently typed results
+*** Eager
+*** Monads, MonadPlus, Effects, Applicative Functor, Idiom Brackets
+m_app : Maybe (a -> b) -> Maybe a -> Maybe b
+m_app (Just f) (Just a) = Just (f a)
+m_app _ _ = Nothing
+Using this, we can write an alternative m_add which uses this alternative notion of function application,
+with explicit calls to m_app:
+m_add' : Maybe Int -> Maybe Int -> Maybe Int
+m_add' x y = m_app (m_app (Just (+)) x) y
+
+Man beachte - (Just (+))
+
+Anders geschrieben
+
+m_add' : Maybe Int -> Maybe Int -> Maybe Int
+m_add' x y = [| x + y |]
+** Prolog/Erlang
+Schlecht an Prolog - Transaktionen
+Gut - Algorithmen (nur für algos?)
+
+http://stackoverflow.com/questions/4084427/how-to-create-a-fact-in-swi-prolog
+emacs.
+assert
+retract
+dynamic(not/1).
+
+Nett, aber mit Idris kann ich state machines ebenso implementieren
+http://www.swi-prolog.org/pldoc/doc_for?object=section(%27packages/pengines.html%27)
+Erlang hat auch global state...
+prolog db rechenintensiv
+** Factor
+Ist nett, aber letzten Endes hat man dann doch wieder sehr viel Code
+Löst das Problem "Was ist der Typ von diesem Programm?" auch nicht wirklich
+Der globale State "Stack" ist nicht das Problem, aber er könnte besser organisiert sein (bspw. als Map).
+Siehe auch: objektorientiertes forth
+
+factor database access, structured data, maps 
+http://concatenative.org/wiki/view/Factor/DB
+
+http://www.drdobbs.com/architecture-and-design/cat-a-functional-stack-based-little-lang/207200779
+https://groups.google.com/forum/#!forum/catlanguage
+http://lambda-the-ultimate.org/node/4448
+** Frege
+   bei datenbanken - paragdigm mismatch, ich müsste erst hibernate klassen erstellen, dann diese referenzieren usw. redundanz
+   better libs than haskell (?)
+   pures sql mit yesql
+** Shen
+*** type system is powerful, but may not always be reliable (fast, ???)
+** kotlin
+debug binincompat downside kotlin 
+** Scala
+*** interop
+https://github.com/travisbrown/scala-java-interop/tree/master/src/main/java/demo
+*** schlecht: scala cryptische symbole, viele arten dinge zu schreiben
+*** with für multiple inheritance und vererbung für eine einzige instanz
+*** companion object für implicit conversion
+*** lift scheint besser... http://stackoverflow.com/questions/12424617/comparing-lift-with-play2
+*** scala tutorial - unnötig kompliziert ohne semikolons, implicits, collections...
+*** hat quotations
+*** caseclasses für pattern matching
+*** implicit sowohl bei parameter als auch bei ursprüngl. wert
+*** def für funktionen, geht auch val?
+** F# Fsharp
+Hat quotations
+Schlecht:
+Null
+Objektorientierung/Vererbung
+** Ocaml
+*** Schlecht: mutable, vererbung 
+*** static duck typing = object system
+*** zitat bei twitter: ocsigen is no pleasure
+*** opam - benötigt mkpkg und opam switch 4.02.3
+yaourt -R ocamlfind
+*** tilde = named parameters
+*** could not build ocamlfind m4...
+** ;; um in utop zu evaluieren
+** Scheme
+*** Eine Continuation aufzurufen ignoriert den restlichen stack
+   bspw. (+ 1 (frozen 'a)) aus on lisp
+   In der Hinsicht ist scheme nicht pure
+** Forth
+*** see zeigt definition des programms
+** postpone um sachen später zu (re?)definieren
+** locals mit {a b }
+** CL
+*** dotted pair
+'(foo . (bar . nil)) = (foo bar)
+'(foo . bar) = (foo . bar)
+
+dotted pairs sind sprichwörtlich paare
+listen können auch tripel etc. sein (wie oben)
+*** macros sind ein bisschen wie includes bezüglich namespaces
+*** paket verwenden
+(use-package :foolib)
+*** buch
+http://www.gigamonkeys.com/book/programming-in-the-large-packages-and-symbols.html
+*** ql getstarted:
+http://xach.livejournal.com/278047.html?thread=674335
+ (load "~/quicklisp/setup.lisp")
+(quickproject:make-project #p"~/git/lisp/StockCL" :depends-on '(drakma postmodern restas))
+
+*** rlwrap
+*** plists wie maps in clojure getf '(:key value :key2 value2)
+*** setq setquoted
+   heißt so wegen (setq x 1), normalerweise würde x evaluiert
+*** gensym - nested instances of macros
+*** operators like do are implicitly in a block of name nil
+*** labels für local function binding
+*** &body wie &rest, nur anders beim pretty print
+*** call/cc selbst definieren, aber nicht genauso
+*** egal
+   push
+   let*
+   labels /flet
+   macrolet
+** FPGA
+*** Unnötig lowlevel...
+** Fay
+keine Typeclasses
+** Datalog
+*** Pydatalog
+nur halb implementiert
+*** Cascalog - eher für lesenden zugriff, keine sql inserts
+*** Alternativen
+Redis - Overkill?
+Prolog - Transkaktionen?
+Picolisp - nett, aber für production? 
+--> Haskell
+** Ceylon
+*** Hat noch nichtmal Pattern-Matching
+*** ceylon - gar nicht so schlecht, tree types, union types, inference, metaprogramming,  more powerful switch/case... , nutzt nur keiner
+** Racket
+*** call-with-transaction,
+*** ändern:
+ (struct-copy foo somefoo [param 4]))
+*** feld-zugriff:
+namedesstructs-namedesfelds
+*** Curried (define ((cut a) b))
+*** named parameters #:
+*** stepper
+*** highlighting in ide
+*** return several
+*** repl in ide
+** Erlang
+*** variablen groß, atome klein
+*** receive nutzt pattern matching, rekursion nötig
+** Rust
+*** unnötig kompliziert und brauche ich nicht
+*** keine repl???
+*** Value types heißt auf den stack
+   That is what the & means in &str. Literal strings are automatically represented as a pointer, but under normal circumstances things will start their life as a value, and to pass them as a pointer you will need to prepend them with &. For example, let's pass the Tm object to the say_something function:
+
+What would happen if we just did say_something("Hello", t);, and change the argument's type to t: time::Tm? The value t will be "moved" into the function, and will no longer be available outside of it. Since say_something("Goodbye", t); is called after, it will throw an error. Read Pointers to learn more.
+
+Even in a language which is pass by value, i will be 5 at the comment. You see, because the argument x is a pointer, we do send a copy over to foo, but because it points at a memory location, which we then assign to, the original value is still changed. This pattern is called pass-reference-by-value. Tricky!
+*** memory
+ let x = Box::new(5);
+
+{
+    int *x;
+    x = (int *)malloc(sizeof(int));
+    *x = 5;
+
+    // stuff happens
+
+    free(x);
+}
+** Smalltalk
+Syntax irgendwie nicht so schön...
+Imperativ
+** CSS
+*** inherit, um die vererbung von umgebenden elementen zum kind zu priorisieren
+*** css sticky
+*** media print query für ausdruck layout
+*** wenn man lokal mit floats arbeiten will: clear
+*** span kann auch style display block!
+*** relativer parent, absolutes child
+* Betriebssystem-Themen
+** cinnamon
+http://unix.stackexchange.com/questions/57311/how-do-i-change-the-number-of-available-workspaces-in-cinnamon?newreg=fc4a64a3c98a4f74ac729d2d39b51658#
+** find . -name "my_pattern"
+** asterisk
+gemeinschaft telefon
+telefonie
+** active directory 
+unterteilt in domänen
+** virtualisierung
+kvm qemu proxmox
+** wget für seiten mirror
+** grep
+cat gebieterlpdirektalt | grep -o -P  '.{0,90}Ulmen.{0,90}' 
+
+grep -B 10 10 zeilen davor
+** maus unsichtbar -> ausloggen
+** windows loopback mit npcap oder ntcap
+** löschen mit shift+entf
+** ntlm für auth unter windows
+** power status
+/sys/class/power_supply/BAT1/capacity
+** wlan
+scheinbar 1,6,11 am besten
+nachbarkanäle werden eh genutzt
+** sprachen lernen
+duolingo, perroquet
+** auf anderen rechner per teamviewer
+** statt wget httrack
+** windows
+*** windows hat etc/host
+** find -name "*.rej"
+** Encoding
+cat -vet für unsichtbare zeichen
+** Vimperator
+K, gt	:	Go one tab right (nextTab)
+J, gT	:	Go one tab left (previousTab)
+g0	:	Go to the first tab (firstTab)
+g$	:	Go to the last tab (lastTab)
+t	:	Create new tab (createTab)
+yt	:	Duplicate current tab (duplicateTab)
+x	:	Close current tab (removeTab)
+X	:	Restore closed tab (restoreTab)
+** groups
+Add an Existing User to a Group
+
+Next we’ll add a user to the group, using this syntax:
+
+usermod -a -G <groupname> username
+** LUKS
+mkfs.ext4 /dev/sdd1
+e2label /dev/sdd1 usbbackup
+cryptsetup -v luksFormat /dev/sdd1
+
+** partitionen mit label!
+** Raspi
+eigenes smartphone mit gsm, batterie, tft, ...
+oder openmoko kaufen/http://www.openphoenux.org/, http://neo900.org/stuff/cccamp15/lightningtalk.mp4
+- besser selbst herstellen, damit wieder ersetzbar
+http://www.ebay.de/sch/i.html?_nkw=mimo%20720s&clk_rvr_id=904170636370&adpos=1t3&treatment_id=7&crlp=95005046468_917&MT_ID=43&device=c&rlsatarget=kwd-28341579033&keyword=mimo+720s&geo_id=33421&poi=&crdt=0
+https://www.kickstarter.com/projects/seeed/rephone-kit-worlds-first-open-source-and-modular-p?ref=nav_search
+casing für raspberry
+evtl. cardbord, local cnc,  or 3dprint online
+*** installation
+http://archlinuxarm.org/platforms/armv6/raspberry-pi
+
+*** motorola lapdock
+- lapdock
+- hdmi kabel mit adapter
+- usb kabel mit adapter
+- stromanschluss von motorola
+*** raspberry/arduino gsm
+https://www.cooking-hacks.com/documentation/tutorials/gprs-gsm-quadband-module-arduino-raspberry-pi-tutorial-sim-900/
+http://www.amazon.com/Pre-assembled-PiTFT-Mini-Kit-Touchscreen/dp/B00ID39LM4/ref=cm_cr_pr_product_top
+
+AT070TN92 V.5
+Touchscreen
+http://www.forum-raspberrypi.de/Thread-projektvorstellung-7-touchscreen-an-raspberry-pi
+http://www.directupload.net/file/d/3481/2svpulxy_jpg.htm
+*** touchscreen
+http://www.instructables.com/id/Wall-Mounted-SqueezePlayer-with-Raspberry-Pi/step2/Audio-and-Video-Setup/
+um-720s raspberry arch
+http://archlinuxarm.org/forum/viewtopic.php?f=31&t=5175
+
+** all icons broken
+reinstall gnome-icons-theme
+** sql
+*** inserts
+insert into ... select ...
+
+*** größe von tabellen
+SELECT sum(round(((data_length + index_length) / 1024 / 1024 / 1024), 2)) as "Size in GB" FROM information_schema.TABLES WHERE table_schema = "hesfinderjahr3"
+
+*** explain sql
+
+** sqlite
+*** es gibt einen pointer auf das statement, das mutiert wird (parameter)
+*** immer error codes lesen...
+*** parameter setzen durch bind*
+*** jede menge boilerplate prozeduren
+** shell
+*** ~ tilde expansion
+** Top mit shift m für memory verbrauch speicher
+** Sudo
+*** kein sudo apt verwenden, sonst u.u. kein proxy mehr oder so
+** Nixos
+*** still waiting for ... after 5 seconds
+nix-env --option binary-caches-parallel-connections 10 -i
+*** update
+update: 
+nixos-rebuild switch --upgrade
+
+evtl.
+nix-channel --update
+nixos-rebuild switch
+
+-j 1
+*** haskell/idris
+nix-shell --run idris
+nix-env -f "<nixpkgs>" -iA
+                 haskellPackages.idris
+
+nix-env -f "<nixpkgs>" -qaP -A haskellPackages
+
+https://nixos.org/nixpkgs/manual/#users-guide-to-the-haskell-infrastructure
+
+-f ‘<nixpkgs>’ gets ‘nixpkgs=/path/…’ from your $NIX_PATH points
+        ‘nix-env’ tool directly to a nixpkgs repo, so you do not need to use
+        nixos.pkgs. or nixpkgs. prefix (depends on channel).  [09:34]
+(More in nix-env’s man page.)
+ cool, thanks, so is <nixpkgs> some kind of nix expression or
+       built in ?
+ <nixpkgs> is a file
+
+‘nix-instantiate --eval --expr "<nixpkgs>"’  [09:37]
+ so <nixpkgs> evaluates to the $NIX_PATH
+
+ You don’t need to use it. If ‘nixos.pkgs.’ does not work for you then
+        you are using ‘nixpkgs’ channel and should use ‘nixpkgs.’ prefix.
+
+nix-env -qaP -A nixos.pkgs.haskellPackages    
+*** find out channel
+    as root
+    nix-channel --list | grep nixos
+
+*** 15.06 und haskell
+http://stackoverflow.com/questions/29033580/how-do-i-use-the-new-haskell-ng-infrastructure-on-nixos
+*** eigene pakete
+http://nixos.org/nixpkgs/manual/#chap-quick-start
+*** clone
+https://nixos.org/wiki/Contributing_to_nixpkgs
+export NIXPKGS=/path/to/clone/of/nixpkgs
+
+Hmm, I tried that same file by the recommended download link (with auto-choosing the best mirror), but the speed seems equally slow. http://www.eclipse.org/downloads/download.php?r=1&nf=1&file=/eclipse/downloads/drops4/R-4.4-201406061215/eclipse-SDK-4.4-linux-gtk-x86_64.tar.gz
+*** calculate hash
+nix-hash --type sha256 Idris-dev 
+*** oracle java
+nix-prefetch-url --type sha256 file:///home/markus/jdk-8u45-linux-x64.tar.gz
+** gpg
+*** Stick zum mitnehmen https://twitter.com/Yubico
+** eclipse
+*** exception
+java.lang.ClassNotFoundException: org.springframework.web.context.ContextLoaderListener,Classpath falsch, bitte von portal kopieren oder so,Kann auch falsche Dependency Version haben in pom oder .settings/wst common component
+*** deploy pfad änderbar
+*** terminate and relaunch
+*** The archive: which is referenced by the classpath, does not exist.
+Verzeichnis/Projekt ganz entfernen
+Debug-> Debug configurations -> classpath -> add external jars e.g.
+bootstrap or tomcat-juli
+*** optional not from google
+import com.google.common.base.Optional
+preferences -> type filter
+*** only show problems that are relevant, also do not confuse error log with problems tab
+triangle -> show -> errors warnings on project
+*** @home
+    marketplace nachinstallieren (zertifikat ankreuzen!!)
+    egit nachinstallieren
+    repository in git view hinzufügen
+    counterclockwise aus marketplace
+    http://www.frege-lang.org/fregide/
+*** Code autocompletion
+http://stackoverflow.com/questions/6202223/auto-code-completion-on-eclipse
+Simply write .abcdefghijklmnopqrstuvwxyz in Auto activation triggers
+for Java field, in Java/Editor/Content Assist (Window->Preferences).
+
+Vorher stand da .
+*** Cleanup imports: Ctrl-Shift-O : organize imports
+bei mir Ctrl-Shift-I
+** neo
+   falls komische zeichen kommen, ist capslock aktiv - rückgängig per shift und caps
+   
+   oder setxkbmap de neo -option
+   und dann xmodmap .Xmodmap
+    
+** github
+   anonyme mail adresse möglich: 
+   MarkusBarthlen@users.noreply.github.com
+** Suchen
+   nautilus
+** fullscreen f11
+** yacy
+   /nix/store/254xxwmqvz2hbwl7x8ncv5ghs83pwx15-oraclejdk-8uxx/
+   modify hashbang to
+   /run/current-system/sw/bin/sh
+   and 
+   JAVA="/run/current-system/sw/bin/java"
+   
+   go to localhost:8090
+
+   chromium
+   http://localhost:8090/yacysearch.html?query=%s&verify=ifexist&contentdom=text&nav=location%2Chosts%2Cauthors%2Cnamespace%2Ctopics%2Cfiletype%2Cprotocol%2Clanguage&startRecord=0&indexof=off&meanCount=5&resource=global&prefermaskfilter=&maximumRecords=10
+** duckduckgo
+   \banana = Wikipedia for banana
+   ! schwarzenegger = first result oder \schwarzenegger
+** google feeling lucky for chromium
+http://www.google.com/search?q=%s&btnI=Im+Feeling+Lucky
+** panel right click: only show tasks from current desktop
+** yakuake
+   configure triangle lower right corner
+
+   close, new ändern
+
+   profiles edit profile color transparency
+
+   desktop effects benötigt
+
+** twitter
+*** view favorites
+    click on your own name
+*** search: shen from:Bodil
+** searchengine
+   duckduckgo
+** KDE
+*** Dolphin - show hidden files shortcut: Alt+.
+*** add launcher:
+    rechtsklick auf existierendes launcher icon
+*** remove 
+apt-get remove plasma*
+** dmesg -T : human readable time
+** mysqldump
+mysqldump -hkermit -ubarthlen -pd1ena,dnPvC352 20150501_chamaeleon_hesfinder > hesfindermay.sql
+
+** postgres
+run as root:
+
+createuser markus
+createdb dbname
+psql -d dbname
+ALTER USER markus WITH PASSWORD '1234';
+
+arch - spezielle postgres config, damit nicht immer upgegraded wird
+systemctl start postgresql.service
+*** yesod
+https://github.com/yesodweb/yesod-scaffold/blob/master/setup.sh
+sudo -u postgres psql <<EOF
+CREATE USER "PROJECTNAME_LOWER" password 'PROJECTNAME';
+CREATE DATABASE "PROJECTNAME_LOWER_test" OWNER "PROJECTNAME";
+EOF
+*** starten
+postgres -D /var/lib/postgres/data/
+createdb facts
+*** jdbc - use tcp/ip for communication
+*** libpg - helper commands to evaluate results
+*** listen command with postgres-simple in haskell enables you to write triggers in haskell
+** Linux
+*** nach reboot
+markus@lambda ~ (git)-[master] % ip addr
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default 
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: enp2s0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc fq_codel state DOWN group default qlen 1000
+    link/ether d4:3d:7e:3c:93:4c brd ff:ff:ff:ff:ff:ff
+    inet6 fe80::7b80:539:57dc:81/64 scope link tentative 
+       valid_lft forever preferred_lft forever
+3: wlp0s29u1u4: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 00:c0:ca:7b:ee:18 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.2.103/24 brd 192.168.2.255 scope global wlp0s29u1u4
+       valid_lft forever preferred_lft forever
+    inet6 2003:50:aa05:4b96:3d01:ff98:6f6b:2795/64 scope global noprefixroute dynamic 
+       valid_lft 14372sec preferred_lft 1772sec
+    inet6 fe80::58e0:818e:68d2:f4da/64 scope link 
+       valid_lft forever preferred_lft forever
+
+*** loginctl session-status c2
+*** anderer user
+sudo su - username
+*** jps
+*** Speicherverbrauch: top und dann < mehrfach
+*** Desktop
+Unity kann nur schwer windowbuttons rechts
+kaum platz für arbeitesplätze
+
+Gnome hat mehrere balken
+KDE genauso
+*** Arch news
+https://www.archlinux.org/news/
+** Mysql
+*** verschlüsselung kostet 3% performance
+*** decimal
+http://stackoverflow.com/questions/4834390/how-to-use-mysql-decimal
+*** fulltext
+http://dba.stackexchange.com/questions/21118/why-full-text-search-returns-less-rows-than-like
+http://dba.stackexchange.com/questions/33185/indexing-a-longtext-field?newreg=06a9532cc96a435e8e6ff4c1b64c3dca
+*** match against
+registerFunction("match", new SQLFunctionTemplate(BooleanType.INSTANCE, "match(?1) against (?2 in boolean mode)"));
+match(" + binaryDataColumn + ",'" + StringUtils.join(words, " ") + "') > 0 
+
+JpaCriteriaBuilder cb = (JpaCriteriaBuilder) cb;
+
+    List<String> args = new ArrayList();args.add("Keyword");
+
+    Expression<Boolean> expr= cb.fromExpression(
+       cb.toExpression(
+         cb.function("", String.class, table.get(Table_.te
+xt1), table.get(Table_.text2)) 
+       )                          
+       .sql("MATCH ? AGAINST (?)", args)
+     );
+
+    query.where(expr);
+*** starten - service lautet bei arch mysqld
+*** Bei startup wird der start der autoincrement neu berechnet
+*** Workbench suchbox
+*** mysql keine transaktionalen schema änderungen
+** Arch
+*** arch pkgbuild findet man unter "source files"
+*** besser als aur
+yaourt -S purescript-bin
+*** aur
+Installing packages
+
+Installing packages from the AUR is a relatively simple process. Essentially:
+Acquire the tarball which contains the PKGBUILD and possibly other required files, like systemd-units and patches (but often not the actual code).
+Extract the tarball (preferably in a folder set aside just for builds from the AUR) with tar -xvf foo.tar.gz.
+Run makepkg in the directory where the files are saved (makepkg -s will automatically resolve dependencies with pacman). This will download the code, compile it and pack it.
+Look for a README file in src/, as it might contain information needed later on.
+Install the resulting package with pacman:
+*** pacman -Syu
+** xmonad
+
+guake = scratchpad
+
+control shift j tausche windows
+
+c p program
+c l expand
+c h less
+c j 
+  k
+  tab
+** sicherheit
+identitäts-diebstahl bei key diebstahl
+** intellij
+*** deploy app
+setup tomcat, including paths (linker baum)
+add war exploded module
+run
+*** org mode not useful, only syntax highlighting
+*** Folders not showing
+You need to create a java module even if you do not program in java...
+*** xmonad
+Make it work - IntelliJ IDEA and Linux (Xmonad)
+IntelliJ (and few other Java programs) has a problem with window not appearing or being frozen. Simple solution:
+$ wmname LG3D
+More info:
+https://bbs.archlinux.org/viewtopic.php?id=142063 which suggest export _JAVA_AWT_WM_NONREPARENTING=1
+https://code.google.com/p/android/issues/detail?id=57675
+Posted by Pawel at 14:50 
+Email This
+BlogThis!
+Share to Twitter
+Share to Facebook
+Share to Pinterest
+Labels: Android Studio, IntelliJ, Java, Xmonad
+* Objektorientiert Programmieren
+Shortcuts müssen erreichbar sein bei Swing (daher zusätzlich zu
+Popupmenü ein Menü)
+** Statische Methoden in Objeckt verschieben
+* Upgrade
+** apt.conf, ftp http https proxy abschalten
+** updaten
+** siehe release notes
+* Backup
+  rsync -avP
+  sda5 root
+  sda1 boot
+  sda6 var
+  sda8 home
+
+* Vibram
+** Waschen kalt 30 grad ohne schleudern:
+Spülstopp wolle, kalt
+* Alibaba
+** minimale bestellmenge oben mitte links unter produkte/lieferant tab
+http://german.alibaba.com/catalogs?selectedTab=product&categoryId=pid702&attributes=48-679&moq=0,1
+http://german.alibaba.com/catalogs?selectedTab=product&categoryId=pid711001&attributes=493-633,19031-100012339&moq=0,1
+** PC Hardware Software
+*** Festplatten
+* Regex
+** für suchen in openoffice wird auch gruppierung mit () und $1 etc. unterstützt
+** ?:
+noncapturing group
+** not
+[^\\]
+* Cron
+cronmaker.com
+* Access
+Herkunft: Berichte oder Formulare
+
+SELECT DISTINCT MSysObjects.Name
+FROM MSysQueries INNER JOIN MSysObjects ON MSysQueries.ObjectId=MSysObjects.Id
+WHERE (((MSysQueries.Name1) Like "*Farben*"))
+
+** debug step through f8
+** subformulare - selektieren, denn das quadrat oben links zeigt nur abfrage, die man durch rechts klicken (...) erreicht
+** mein access
+Option Compare Database
+Option Explicit
+'Purpose:   Search your database (tables, queries, forms, reports)
+'           to find where a particular field name is used.
+'Release:   April 2007 (a work in progress.)
+'Documentation: http://allenbrowne.com/ser-73.html
+'Author:    Allen Browne    (allen@allenbrowne.com)
+'Versions:  Requires Access 2000 and later.
+'           For Access 2000, you will need to remove this from the end of several lines:
+'                   , WindowMode:=acHidden
+
+'Usage examples
+'==============
+' To find where InvoiceID is used in Report1:
+'           ? FindField("InvoiceID", "Report1")
+' To find where ClientID is used in all forms and reports:
+'           ? FindField("ClientID",,ffoForm + ffoReport)
+' To find anywhere EventDate is used:
+'           ? FindField("EntryDate")
+
+'Summary
+'=======
+' Tables    Searches the Name and Caption of the fields, and the Filter and OrderBy of the table.
+' Queries:  Searches the Name, SourceName, and Caption of fields; Filter and OrderBy of query.
+' Forms:    Searches Name, ControlSource, Caption of controls,
+'               and LinkMasterFields/LinkChildFields of subform controls
+' Reports:  Searches Name, ControlSoruce, Caption of controls, Control Source of Group Levels,
+'               and LinkMasterFields/LinkChildFields of subreport controls
+
+'Notes
+'=====
+' When you type a SQL statement into the RecordSource of a form/report, or the RowSource
+'           of a combo/listbox, Access creates a saved query with a name prefixed with ~sq_.
+' With reports, click Ok if notified the report was set up for another printer.
+'Does not search RecordSource of form/report, nor RowSource of combo/list box.
+'Does not handle renamed fields that might be under the control of Name AutoCorrect.
+'Does not handle query parameters (which are not fields.)
+
+'Bitfield constants: their sum indicates which types of object to search.
+Public Enum FindFieldObject
+    ffoTable = 1        'Search table fields.
+    ffoQuery = 2        'Search query fields.
+    ffoForm = 4         'Search form controls and properties.
+    ffoReport = 8       'Search report controls, properties, and group levels.
+    ffoAll = 15         'Search all (tables, queries, forms, and reports.)
+End Enum
+
+Public Function FindField(strFieldName As String, _
+    Optional strObjectName As String, _
+    Optional iObjectTypes As FindFieldObject = ffoAll, _
+    Optional bExactMatchOnly As Boolean) As Long
+On Error GoTo Err_Handler
+    'Purpose:   Search the current database for where a field name is used. MAIN FUNCTION.
+    'Arguments: strFieldName:    the field name to find (or part of field name.)
+    '           strObjectName:   Leave blank to search all objects. Only named object if entered.
+    '           iObjectTypes:  determines what objects to search for. Sum of the types you want.
+    '           bExactMatchOnly: not matched with wildcards if this is True.
+    'Return:    Number of matches found.
+    '           List of items in the Immediate Window (Ctrl+G.)
+    'Usage:     To search tables and queries for a field named Inactive:
+    '               Call FindField("Inactive", ffoTable + ffoQuery)
+    Dim db As DAO.Database          'This database
+    Dim tdf As DAO.TableDef         'Each table
+    Dim qdf As DAO.QueryDef         'Each query
+    Dim accObj As AccessObject      'Each form/report.
+    Dim strDoc As String            'Name of form/report.
+    Dim strText2Match As String     'strFieldName with wildcards.
+    Dim bLeaveOpen As Boolean       'Flag to leave the form/report open if it was already open.
+    Dim lngKt As Long               'Count of matches.
+    
+    'Initialize
+    Set db = CurrentDb()
+    If bExactMatchOnly Then
+        strText2Match = strFieldName
+    Else
+        strText2Match = "*" & strFieldName & "*"
+    End If
+    
+    'Search Tables
+'    If (iObjectTypes And ffoTable) <> 0 Then
+'        If strObjectName <> vbNullString Then
+'            'Just one table (if it exists)
+'            If ObjectExists(db.TableDefs, strObjectName) Then
+'                Set tdf = db.TableDefs(strObjectName)
+'                lngKt = lngKt + FindInTableQuery(tdf, strText2Match)
+'            End If
+'        Else
+'            'All tables
+'            For Each tdf In db.TableDefs
+'                lngKt = lngKt + FindInTableQuery(tdf, strText2Match)
+'            Next
+'        End If
+'    End If
+    
+    'Search Queries
+'    If (iObjectTypes And ffoQuery) <> 0 Then
+'        If strObjectName <> vbNullString Then
+'            'Just one query (if it exists)
+'            If ObjectExists(db.QueryDefs, strObjectName) Then
+'                Set qdf = db.QueryDefs(strObjectName)
+'                lngKt = lngKt + FindInTableQuery(qdf, strText2Match)
+'            End If
+'        Else
+'            'All queries
+'            For Each qdf In db.QueryDefs
+'                lngKt = lngKt + FindInTableQuery(qdf, strText2Match)
+'            Next
+'        End If
+'    End If
+
+    'Search Forms.
+    If (iObjectTypes And ffoForm) <> 0 Then
+        If strObjectName <> vbNullString Then
+            'Just one form (if it exists)
+            If ObjectExists(CurrentProject.AllForms, strObjectName) Then
+                Set accObj = CurrentProject.AllForms(strObjectName)
+                strDoc = accObj.Name
+                bLeaveOpen = accObj.IsLoaded
+                DoCmd.OpenForm strDoc, acDesign, WindowMode:=acHidden
+                'Search
+                lngKt = lngKt + FindInFormReport(Forms(strDoc), strText2Match)
+                'Close unless already open.
+                If Not bLeaveOpen Then
+                    DoCmd.Close acForm, strDoc, acSaveNo
+                End If
+            End If
+        Else
+            'All forms
+            For Each accObj In CurrentProject.AllForms
+                strDoc = accObj.Name
+                bLeaveOpen = accObj.IsLoaded
+                DoCmd.OpenForm strDoc, acDesign, WindowMode:=acHidden
+                'Search
+                lngKt = lngKt + FindInFormReport(Forms(strDoc), strText2Match)
+                'Close unless already open.
+                If Not bLeaveOpen Then
+                    DoCmd.Close acForm, strDoc, acSaveNo
+                End If
+            Next
+        End If
+    End If
+    
+    'Search Reports.
+'    If (iObjectTypes And ffoReport) <> 0 Then
+'        If strObjectName <> vbNullString Then
+'            'Just one report (if it exists)
+'            If ObjectExists(CurrentProject.AllReports, strObjectName) Then
+'                Set accObj = CurrentProject.AllReports(strObjectName)
+'                strDoc = accObj.Name
+'                bLeaveOpen = accObj.IsLoaded
+'                DoCmd.OpenReport strDoc, acDesign, WindowMode:=acHidden
+'                'Search
+'                lngKt = lngKt + FindInFormReport(Reports(strDoc), strText2Match)
+'                'Check the Group Levels as well.
+'                lngKt = lngKt + FindInGroupLevel(Reports(strDoc), strText2Match)
+'                'Close unless already open.
+'                If Not bLeaveOpen Then
+'                    DoCmd.Close acReport, strDoc, acSaveNo
+'                End If
+'            End If
+'        Else
+'            'All reports
+'            For Each accObj In CurrentProject.AllReports
+'                strDoc = accObj.Name
+'                bLeaveOpen = accObj.IsLoaded
+'                DoCmd.OpenReport strDoc, acDesign, WindowMode:=acHidden
+'                'Search
+'                lngKt = lngKt + FindInFormReport(Reports(strDoc), strText2Match)
+'                'Check the Group Levels as well.
+'                lngKt = lngKt + FindInGroupLevel(Reports(strDoc), strText2Match)
+'                'Close unless already open.
+'                If Not bLeaveOpen Then
+'                    DoCmd.Close acReport, strDoc, acSaveNo
+'                End If
+'            Next
+'        End If
+'    End If
+
+Exit_Handler:
+    FindField = lngKt
+    'Clean up
+    Set accObj = Nothing
+    Set qdf = Nothing
+    Set tdf = Nothing
+    Set db = Nothing
+    Exit Function
+
+Err_Handler:
+    MsgBox "Error " & Err.number & ": " & Err.Description, vbExclamation, "FindField"
+    Resume Exit_Handler
+End Function
+
+Private Function FindInTableQuery(obj As Object, strText2Match As String) As Long
+On Error GoTo Err_Handler
+    'Purpose:   Find fields where the Name, SourceField, or Caption matches the string.
+    'Arguments: obj = the TableDef or QueryDef to search.
+    '           strText2Match is the text to search for, including any wildcards.
+    'Return:    Count of matches listed.
+    Dim fld As DAO.Field
+    Dim lngKt As Long
+    
+    For Each fld In obj.Fields
+        'Search the name
+        If fld.Name Like strText2Match Then
+            Debug.Print obj.Name & "." & fld.Name
+            lngKt = lngKt + 1&
+        'Search the SourceField (for aliased query fields.)
+        ElseIf fld.SourceField Like strText2Match Then
+            Debug.Print obj.Name & "." & fld.Name & ".SourceField: " & fld.SourceField
+            lngKt = lngKt + 1&
+        'Search the Caption.
+        ElseIf HasProperty(fld, "Caption") Then
+            If fld.Properties("Caption") Like strText2Match Then
+                Debug.Print obj.Name & "." & fld.Name
+                lngKt = lngKt + 1&
+            End If
+        End If
+    Next
+    Set fld = Nothing
+    
+    'Search the Filter and OrderBy properties too.
+    lngKt = lngKt + FindInProperty(obj, "Filter", strText2Match)
+    lngKt = lngKt + FindInProperty(obj, "OrderBy", strText2Match)
+
+Exit_Handler:
+    FindInTableQuery = lngKt
+    Exit Function
+
+Err_Handler:
+    MsgBox "Error " & Err.number & ": " & Err.Description, vbExclamation, "FindInTableQuery"
+    Resume Exit_Handler
+End Function
+
+Private Function FindInFormReport(obj As Object, strText2Match As String) As Long
+On Error GoTo Err_Handler
+    'Purpose:   Search for controls where the Name, Control Source, or Caption matches the string.
+    'Arguments: obj = a reference to the form or report.
+    '           strText2Match is the text to search for, including any wildcards.
+    'Return:    Count of matches listed.
+    Dim ctl As Control      'Each control on the form/report.
+    Dim lngKt As Long       'Count of matches.
+
+    For Each ctl In obj.Controls
+        'Search the name
+        If ctl.Name Like strText2Match Then
+            Debug.Print obj.Name & "." & ctl.Name & " (" & ControlTypeName(ctl.ControlType) & ")"
+            lngKt = lngKt + 1&
+        'LinkMasterFields/LinkChildFields for subform/subreport.
+        ElseIf ctl.ControlType = acSubform Then
+            If ctl.LinkMasterFields Like strText2Match Then
+                Debug.Print obj.Name & "." & ctl.Name & ".LinkMasterFields: " & ctl.LinkMasterFields
+                lngKt = lngKt + 1&
+            End If
+            If ctl.LinkChildFields Like strText2Match Then
+                Debug.Print obj.Name & "." & ctl.Name & ".LinkChildFields: " & ctl.LinkChildFields
+                lngKt = lngKt + 1&
+            End If
+        'Search the Control Source
+        ElseIf HasProperty(ctl, "ControlSource") Then
+            If ctl.Properties("ControlSource") Like strText2Match Then
+                Debug.Print obj.Name & "." & ctl.Name & ".ControlSource: " & ctl.ControlSource
+                lngKt = lngKt + 1&
+            End If
+        'Search the caption (less any hotkey.)
+        ElseIf HasProperty(ctl, "Caption") Then
+            If ctl.Caption Like Replace(strText2Match, "&", vbNullString) Then
+                Debug.Print obj.Name & "." & ctl.Name & ".Caption: " & ctl.Caption
+                lngKt = lngKt + 1&
+            End If
+        End If
+    Next
+    
+    'Search the Filter and OrderBy properties too.
+    lngKt = lngKt + FindInProperty(obj, "Filter", strText2Match)
+    lngKt = lngKt + FindInProperty(obj, "OrderBy", strText2Match)
+    
+Exit_Handler:
+    FindInFormReport = lngKt
+    Set ctl = Nothing
+    Exit Function
+
+Err_Handler:
+    MsgBox "Error " & Err.number & ": " & Err.Description, vbExclamation, "FindInFormReport"
+    Resume Exit_Handler
+End Function
+
+Private Function FindInProperty(obj As Object, strPropName As String, strText2Match As String) As Long
+On Error GoTo Err_Handler
+    'Purpose:   Search the Filter an OrderBy properties of the object for the string.
+    'Arguments: obj           = a reference to TableDef, QueryDef, Form, or Report.
+    '           strPropName   = name of property to search, e.g. "Filter" or "OrderBy".
+    '           strText2Match = the text to search for, including any wildcards.
+    'Return:    1 if found; 0 if not.
+    
+    If obj.Properties(strPropName) Like strText2Match Then
+        Debug.Print obj.Name & "." & strPropName & ": " & obj.Properties(strPropName)
+        FindInProperty = 1&
+    End If
+    
+Exit_Handler:
+    Exit Function
+
+Err_Handler:
+    Select Case Err.number
+    Case 438&, 3270&                'Property doesn't apply; Property not found.
+        'do nothing
+    Case Else
+        MsgBox "Error " & Err.number & ": " & Err.Description, vbExclamation, ".FindInProperty"
+    End Select
+    Resume Exit_Handler
+End Function
+
+Private Function FindInGroupLevel(rpt As Report, strText2Match As String) As Long
+On Error GoTo Err_Handler
+    'Purpose:   Search the Control Source of each Group Level of a report.
+    'Arguments: rpt = a reference to the report.
+    '           strText2Match is the text to search for, including any wildcards.
+    'Return:    Count of matches listed.
+    'Note:      Assumes the report is open.
+    Dim i As Integer        'Loop controller (group levels.)
+    Dim lngKt As Long       'Count of matches
+    
+    Do      'Loop will terminate by error when there are no more group levels.
+        If rpt.GroupLevel(i).ControlSource Like strText2Match Then
+            Debug.Print rpt.Name & ".GroupLevel(" & i & "): " & rpt.GroupLevel(i).ControlSource
+            lngKt = lngKt + 1&
+        End If
+        i = i + 1
+    Loop
+    
+Exit_Handler:
+    FindInGroupLevel = lngKt
+    Exit Function
+
+Err_Handler:
+    If Err.number <> 2464& Then     'No more group levels.
+        MsgBox "Error " & Err.number & ": " & Err.Description, vbExclamation, "FindInGroupLevel()"
+    End If
+    Resume Exit_Handler
+End Function
+
+Public Function ObjectExists(obj As Object, strObjectName As String) As Boolean
+    'Purpose:   Return True if the named object exists.
+    'Examples:  If ObjectExists(CurrentDb.TableDefs, "Table1") Then
+    '           If ObjectExists(CurrentProject.AllForms, "Form1") Then
+    Dim varDummy As Variant
+    On Error Resume Next
+    varDummy = obj.Item(strObjectName).Name
+    ObjectExists = (Err.number = 0&)
+End Function
+
+Public Function ControlTypeName(lngControlType As AcControlType) As String
+On Error GoTo Err_Handler
+    'Purpose:   Return the name of the ControlType.
+    'Argument:  A Long Integer that is one of the acControlType constants.
+    'Return:    A string describing the type of control.
+    'Note:      The ControlType is a Byte, but the constants are Long.
+    Dim strReturn As String
+
+    Select Case lngControlType
+        Case acBoundObjectFrame: strReturn = "Bound Object Frame"
+        Case acCheckBox: strReturn = "Check Box"
+        Case acComboBox: strReturn = "Combo Box"
+        Case acCommandButton: strReturn = "Command Button"
+        Case acCustomControl: strReturn = "Custom Control"
+        Case acImage: strReturn = "Image"
+        Case acLabel: strReturn = "Label"
+        Case acLine: strReturn = "Line"
+        Case acListBox: strReturn = "List Box"
+        Case acObjectFrame: strReturn = "Object Frame"
+        Case acOptionButton: strReturn = "Object Button"
+        Case acOptionGroup: strReturn = "Option Group"
+        Case acPage: strReturn = "Page (of Tab)"
+        Case acPageBreak: strReturn = "Page Break"
+        Case acRectangle: strReturn = "Rectangle"
+        Case acSubform: strReturn = "Subform/Subrport"
+        Case acTabCtl: strReturn = "Tab Control"
+        Case acTextBox: strReturn = "Text Box"
+        Case acToggleButton: strReturn = "Toggle Button"
+        Case Else: strReturn = "Unknown: type" & lngControlType
+    End Select
+    
+    ControlTypeName = strReturn
+
+Exit_Handler:
+    Exit Function
+
+Err_Handler:
+    MsgBox "Error " & Err.number & ": " & Err.Description, vbExclamation, "ControlTypeName()"
+    Resume Exit_Handler
+End Function
+
+Public Function HasProperty(obj As Object, strPropName As String) As Boolean
+    'Purpose:   Return true if the object has the property.
+    Dim varDummy As Variant
+    
+    On Error Resume Next
+    varDummy = obj.Properties(strPropName)
+    HasProperty = (Err.number = 0)
+End Function
+
+Public Function FindTest()
+    Debug.Print FindField("Rolladenfarbe", , ffoForm)
+End Function
+** suche:
+   kontextmenü - definition
+   ctrl+s  verschiedene scopes
+   buntes icon objekt irgendwas
+* Etikettenprinter
+** thermodirekt statt thermotransfer
+* Iphone
+** Icloud für backups
+* Literate Programming
+literate programming - beliebige organisation von source code
+literate programming -> was du wirklich willst ist eine bessere programmiersprache
+probleme: debugging, refactoring
+Lösung: orgbabel
+* Nbsp
+_ als nonbreaking space angezeigt
+
+* mail
+double opt in immer
+* rdp
+wirft raus, proxmox nicht
+* facebook
+Datenschutzerklärung
+* windows 10 weitere programme
+klick auf pfeil nach unten für graphische tastatur
+* Chrome
+** http://stackoverflow.com/questions/12212504/automatically-open-chrome-developer-tools-when-new-tab-new-window-is-opened
+* Mobile
+** chrome device modification
+* CSS
+** display style flex
+** Content zentrieren mit margin 0 auto (braucht width angabe!), randfarbe kommt von html css background und kind hat dann keinen
+** Image mit span alignen = display style ändern (für spanähnlich), vertical align
+** relative fontgröße mit 1.2em oder 120%, sonts 8pt etc.
+etwa 
+		span {
+		   font-size: 100%;
+		}
+
+** absolut positionieren in relativem div, evtl. display:inline-block setzen
+** float bezieht sich ebenfalls auf den parent ähnlich wie position absolute
+* Memory
+JConsole
+
+-XX:+HeapDumpOnOutOfMemoryError
+
+
+-Xms1024m -Xmx1024m -XX:+HeapDumpOnOutOfMemoryError
+
+* Thunderbird
+schlüsselwort anhang
+** falls schnellsuche fehlt, button betätigen oben links
+** neuer filter
+Menubar Einstellungen ---
+Filter
+** als wichtig markieren etc.
+1 oder 4 eingeben bei markierter mail
+* Login
+** passwort login problem : beim anmelden habe ich capslock
+* Todos
+super wie alt behandeln
+alt-shift-backspace 
+swap alt and ctrl
+
+
+
+

@@ -1,0 +1,495 @@
+* Jsp
+to find the generated java file, look under tomcat's work folder 
+
+** enums langsam
+property editor
+** i parameter müssen immer mit übergeben werden es sei denn sie wurden auf request scope geändert
+** requestScope.bla analogon fürs attribut
+** param.irgendwas bei jsp
+** += concat operator
+** default scope page, sucht in allen
+** jspkomponenten per include
+** alte version nicht kompatibel
+** kompiliert
+* Tomcat
+Importiert beim Start der entsprechenden VM die cacerts der underlying jvm
+
+killen - bootstrap jps 
+
+** reihenfolge der filter
+erst pattern 
+dann servlet name
+der reihenfolge nach
+
+http://stackoverflow.com/questions/17086712/servlet-filters-order-of-execution
+** wsfilter websockets
+** session geht verloren : https, persistent manager typo (2x)
+** docbase für hosting von statischen ordnern etc
+** work verzeichnis
+/home/barthlen/local/apache-tomcat-8.0.22/work/Catalina/localhost/payment_integration/reports
+* JSF
+** messages nicht angezeigt
+früher generieren oder
+ajax: autoUpdate="true"
+** statt property auch http://stackoverflow.com/questions/11912476/how-to-findout-component-family-and-renderer-type-of-a-jsf-component
+** wie renderer attribute bestimmen:
+http://stackoverflow.com/questions/11912476/how-to-findout-component-family-and-renderer-type-of-a-jsf-component
+** prerenderview jedesmal
+** http://stackoverflow.com/questions/21680023/calling-javascript-on-complete-of-commandbutton-action
+** in context.xml kann es strukturierte setter geben? 
+** mehr try catch blöcke vllt.? lesbarer?
+** rich:column style attribut anstelle von columnClasses
+** ajax - parent container rerendern bei checkbox (aber nicht zu groß)
+** button ohne validation etc. - immediate
+** selectitem brauch zusätzlich den converter!
+
+** #{param['mainContentForm:op']} - für params mit colon
+** währung / brüche
+<f:convertNumber maxFractionDigits="2" minFractionDigits="0" locale="de_DE" />
+
+** rerender javascript
+http://stackoverflow.com/questions/9920205/rerender-via-js-api
+** tmpdir
+http://stackoverflow.com/questions/11214047/getting-servletcontext-attribute-javax-servlet-context-tmpdir-in-controller
+** session fehlt - cookies und session fehlt url muss gleich sein
+** facelettags und eigenes xhtml für eigene tags
+** error page
+responseSendError nötig
+** viewparam 
+required true, validator , alles früh im lifecycle, eigene logik bean für konstruktor, wegen parameterlosen konstruktor pflicht?
+
+<f:metadata>
+    <f:viewParam id="id" name="id" value="#{bean.id}" required="true">
+        <f:validateLongRange minimum="10" maximum="20" />
+    </f:viewParam>
+    <f:viewAction action="#{bean.onload}" />
+</f:metadata>
+<h:message for="id" />
+
+<h:link outcome="next" includeViewParams="true">
+<!-- Or -->
+<h:link outcome="next?includeViewParams=true">
+
+** grids für tabellenartiges layout nutzen
+** JSF Komponente für eigenen namespace, outputscript, komponente bindet komponente ein
+** bei zugriff aus anderer url kann eine neue session entstehen!
+** datatable braucht column, generiert tds
+** jsf fehlende attribute, laufvariablen, beans, expression language falsch (# fehlt)
+** nicht serialisierbar -> man fliegt aus der session
+** live auf server editieren
+** Web.xml 3.1
+http://stackoverflow.com/questions/19661135/dynamic-web-module-3-0-3-1
+** max upload filesize
+in web.xml
+** parameter per ui:decorate ui:param
+* Windowbuilder
+** Ganz oben auswählen für großziehen
+* Hibernate
+** besser kein merge bei hibernate requests
+** alias bei sql restriction
+Restrictions.sqlRestriction("{alias}
+** joined path für eagerness (allerdings schlecht für collections)
+** subquery criteria builder
+TypedQuery<Integer> q = getEntityManager().createQuery(cSub);
+            List<Integer> resultList = q.getResultList(); 
+** metamodel geändert
+persistence.xml ändern für metamodel
+
+** keine falschen klammern in jpql!!
+** hibernate lazy blob funzt nit (nur postgres)
+
+** flush callt getters
+** parent property
+cascade set null
+** onetoonelazy geht nicht immer (man muss lazytoone nutzen oder listen oder umbiegen - id ist auf anderer seite)
+** konstruktor
+** getOptional
+** schema generierung
+http://techblog.bozho.net/how-to-generate-a-schema-creation-script-with-hibernate-4-jpa-and-maven/
+** jql
+listenparameter bei in muss mit () umschlossen werden
+** Session, Connection, ReadCommitted
+ Session session = (Session) em.getDelegate();
+        session.doWork(new Work() {
+            @Override
+            public void execute(Connection connection) throws SQLException {
+                LOG.error("Transaction isolation level is {}", Environment.isolationLevelToString(connection.getTransactionIsolation()));
+            }
+        }); 
+
+  &amp;sessionVariables=tx_isolation='read-committed'
+** automatisch metamodels erstellen
+Eclipse's JPA 2.0 support through Dali (which is included in "Eclipse IDE for JEE Developers") has its own metamodel generator integrated with Eclipse.
+
+Select your project in the Package Explorer
+Go to Properties -> JPA dialog
+Select source folder from Canonical metamodel (JPA 2.0) group
+Click Apply button to generate metamodel classes in the selected source folder
+** annotate fields, use optional in getters maybe
+** keine automatischen joins hibernate
+Grund: nicht alle gejointen objekte sind sichtbar! berechtigungen
+** generate db
+hibernate from and to database - http://stackoverflow.com/questions/306806/hibernate-automatically-creating-updating-the-db-tables-based-on-entity-classes
+
+** from uml
+http://www.visual-paradigm.com/solution/eclipseuml/
+https://code.google.com/a/eclipselabs.org/p/hiberobjects/
+** log debug for meta
+** key in list
+from.get(Entity_.key)
+						.in(keys)
+** many to many 
+evtl. min embedded id und so
+siehe auch matc ids
+bzw. mainD
+** final methods are evil
+  proxy does not do it correctly
+** joined paths
+** immutable annotation
+** clear der listen wg. persistent bag
+* MigLayout
+** Komponente zum wachsen sollte selbst growx setzen!
+** allgemein
+		MigLayout layout = (MigLayout) extendedSearchArea.getLayout();
+
+		Map<java.awt.Component, Object> constraintMap = layout
+				.getConstraintMap();
+
+		layout.invalidateLayout(extendedSearchArea);
+		extendedSearchArea.setLayout(new MigLayout("insets 5",
+				"[::100px,grow][grow][grow][grow]",
+				"[28px,grow][28px][28px][28px][28px]"));
+
+		java.awt.Component[] allComps = extendedSearchArea.getComponents();
+		extendedSearchArea.removeAll();
+		for (java.awt.Component c : allComps) {
+			// if (condition_to_insert) {
+			// extendedSearchArea.add(insertComponent, new CC());
+			// }
+			extendedSearchArea.add(c, constraintMap.get(c));
+
+		}
+* SynchronizedMap
+** eine solche stellt nicht iteration sicher, nur add was wegen speichervergrößerung nicht atomar sein kann
+** Phx cache?
+* Eclipse
+** working set statt workspace
+
+** eclipse - minus collabiert
+** http://stackoverflow.com/questions/10623805/how-to-use-nonnullbydefault-on-a-package
+** source not found -> hinzufügen und abbrechen
+** build
+buildauto funzt nit, in properties nachgucken wg. java version
+
+** home setup
+java, jst in eclipse nachinstallieren, maven download sources
+** null annotationen
+** quicksearch im toolbar
+** toolbar customizen
+** use xml editor (context menu for validation possibly)
+** eclipse mars commits not showing filenames
+export SWT_GTK3=0 in the launcher (run in terminal)
+** build-probleme/seltsame exceptions - projekte auf fehler überprüfen, insbesondere abhängige projekte
+** control shift l - list of shortcuts
+** pmd
+** eclipse tip of day
+** checkstyle
+** Für wiederkehrendes templates nutzen, auch kurzfristig
+** organize imports anders
+http://blog.vogella.com/2009/04/01/eclipse-organize-imports-filter/
+** todos nur im aktuellen projekt
+view -> tasks -> configure content -> current project
+** customize filesearch!
+** Go to last edit in file: Uhm, as in, undo and then redo. That is, press Ctrl + Z, and then Ctrl + Y.
+** grep plugin LOG.debug("Markus");
+** npe repo
+** style
+** shortcuts
+expand C-s-e
+collapse C-s-l
+outline C-o
+* Jasper
+** pattern bei geld in jasper reports
+** outline für detail, gruppe, variable
+** subreports eliminieren nach möglichkeit (detailband)
+** evaluationtime sehr wichtig, bei variablen ist also nicht nur resetgroup wichtig
+** print when overflows, reset type none
+** Gruppieren statt Unterbericht, aber Reihenfolge der Aufträge / nach Kunden sortiert
+** Unterbericht für Teile eines Berichts ok
+** Umgekehrt wenn man Gruppiert müsste die Reihefolge der Aufträge und Kunden eines Teils stimmen
+** Unter Scrollbar klicken und selektieren und ziehen für unterberichte
+** Auch tab, links 1 oder 2mal klicken von scrollbar, subbericht in subbericht
+* Java
+** für reflection auch gut
+propertyutils
+** reflection
+Introspector cachet
+** generics top down auflösen, nicht bottom up! Sonst hat man unnötigen Parameter
+** resteasy
+Certificate for <buergerservice.ionas.de> doesn't match any of the subject alternative names: [www.rlp-buergerservice.de, rlp-buergerservice.de]
+resteasy anders starten
+** query parameter
+http://stackoverflow.com/questions/26177749/how-can-i-append-an-query-parameter-to-an-existing-url
+** exceptions statt optional
+** jvm out of memory debugging
+-XX:+HeapDumpOnOutOfMemoryError
+
+** format - zu beachten, das pattern ist IMMER ENGLISCH
+
+** patriciatrie - commons collections
+** file
+java - file constructor für unterdatei
+
+** numberformat
+NumberFormat nf = NumberFormat.getNumberInstance(Locale.GERMAN);
+        nf.setGroupingUsed(true);
+        nf.setMinimumFractionDigits(2);
+        nf.setMaximumFractionDigits(2);
+            //return "€ " + nf.format(value); 
+
+** java lernen
+jenkins
+Hibernate-Buch
+Checkstyle/PMD
+Fernuni Hagen skript
+Javascript
+Java8 buch
+selenium
+eclipse einstellungen
+scala java
+save actions
+funprog hagen (constraints vielleicht mit objektmethoden lösbar?)
+berkley db (key values)
+aspektj (siehe unten)
+pragprog/clean coder
+continuation passing style / consumer (several)
+private getter/setter hibernate 
+erlang? (stateless programming)
+extreme programming
+mehr asynchron (wenn die gui das verlangt)
+xtext/dsl (nur bei sehr viel dsl anwendung sinnvoll)
+code generators (nur bei externen schnittstellen wsdl->java, sql->java bzw. wenn man nie das artefakt verändert, was selten vorkommt)
+uni pdfs
+javascript
+continuos deployment
+mythical man month
+** konstruktoren
+** null annotationen
+** arrays.aslist
+** cdi <> spring <> jsf injection
+** java alternative zu objekten - objekt mit clojure map als wrapper mit gettern/settern
+** wrap clojure's persistent collections?
+** Data oriented Programming - mehr Klassen definieren2
+** java dsl (mit objekten coden) - vorteil: reifikation, man behält typen zur laufzeit!
+** Das Problem bei Java ist nicht Java, sondern die Bibliotheken (Swing, Hibernate, Spring und der Umgang mit diesen). 
+** Statt methoden funktionen als properties?, oder besser Implementation von Funktion mit toString des Namens, bzw. funktioniert alles nicht
+** Schnell listen erzeugen - guava oder Stream.of("1","2")
+** Branching mit Optional und orelse orelseget
+** Checkstyle nutzen, damit methoden kurz sind
+** Checker für mehr code analysis
+** jooq safer sql
+** chronon - reverse debugging
+** Java tuples
+** Guava - best tips
+**** Cache builder
+**** Multimaps
+**** Collections - create maps fast 
+**** Charmatcher
+**** FirstNonNull
+**** Multimaps.index
+** vererbung und equals ist tricky bei gemischten collections
+    zumindest wenn unterschiedliche klassen equal sein können
+** keine mutable fields bei hashcode (sondern id?), da sich wenn sich das feld ändert, der hashcode ändert, der aber nicht neu berechnet wird nach add?
+** nimmt nicht den exakten typ bei overloading sondern den den es aktuell kennt
+** private : erlaubt auch schwesterobjekten zugriff
+** protected : nur auf klassenebene
+** Eclipse: watchpoint oder variables für variablenüberwachung
+** Higher order functions mit functional interfaces
+** Spring
+**** Line number fehlt
+**** Proxies
+**** Zuviele Klassen
+** volatile = synchronized auf variablen
+** clojure datenstrukturen
+https://github.com/krukow/clj-ds
+** warum kein konstruktor bei hibernate
+beans müssen sich kennen
+** java.lang.IllegalStateException: Application was not properly initialized at startup, could not find Factory: javax.faces.context.FacesContextFactory 
+Tomcat Eclipse config: versehentliche einstellung: serve + publish
+** classnotfound
+projekt schließen, common component auf head setzen
+
+auch möglich:
+static block fehler
+** ssl
+javax net debug für ssl debug
+** oo trivialisiert kopieren
+** mehrere equals implementationen?
+** javadoc
+@link...
+** naturalComparator!
+** Iterate over map
+Zuerst map.entrySet für autocompletion
+** Java installieren
+*** cp -r jdk1.8.0_45 /usr/lib/jvm   
+*** rm /usr/lib/jvm/jdk1.8.0
+*** cd /usr/lib/jvm
+*** ln -s jdk1.8.0_45 jdk1.8.0   
+* Groovy
+metaobject protocol
+multimethods
+
+* Spring
+** spring webflow
+hat flowscope
+** Classnotfound
+org.springframework.beans.factory.CannotLoadBeanClassException: Cannot find class - .classpath geändert
+
+** Zeilennummer fehlt
+** Spring Roo/Grails/Yesod
+** JTATransactionManager bei mehreren Datenquellen, nur nicht mit Tomcat!
+http://stackoverflow.com/questions/1961566/how-to-configure-transaction-management-for-working-with-2-different-db-in-spring
+
+Ebenso
+http://stackoverflow.com/questions/22447791/spring-transaction-management-to-work-with-multiple-data-sources
+
+http://forum.spring.io/forum/spring-projects/data/78645-jtatransactionmanager-not-rolling-back-the-data
+
+https://docs.jboss.org/hibernate/shards/3.0/reference/en/html_single/
+* Swing
+** ganz wichtig - invokelater bei concurrency und ähnlichem
+** jformdesigner
+** getSelectedRow , getSelectedColumn stimmen!
+** dialog
+			JDialog dialog = new JDialog(SpringWorkaround.getDesktop()
+					.getFrame(), ModalityType.MODELESS);
+			dialog.setBounds(132, 132, 300, 200);
+			dialog.add(new JLabel(prob.getMessage()));
+			dialog.setVisible(true);
+** Renderer übergibt sich
+* JPA
+http://stackoverflow.com/questions/5115422/not-in-constraint-using-jpa-criteria
+trailing whitespace
+
+** extended persistence context für geschachtelte transaktionen? was ist mit datenbankübergreifenden wenn der 2.commit failed?
+** findbyid ist gecached, find nicht!
+** criteria builder kann left join
+** many to many / one to many owner u.a. wird bestimmt durch mappedby (insertable, updatable evtl. auch nötig)
+** bei like ist escapen möglich
+** persistence.xml triggert rebuild
+* Seam
+** seam-gen generiert ganzes crud. crud generator
+** Pfade entweder in configs oder in resource klassen
+* Maven
+** aktualisieren find -name "*.lastUpdated" -exec rm {} \;
+
+** stern anstelle von (minor)versionsnummer
+** fragments
+* Logback
+** Debug sql
+	<logger name="org.hibernate.SQL">
+		<level value="DEBUG" />
+	</logger>
+
+  Bei trace auch mit Parameterwerten!
+* Clojure
+** vorteil von datomic datalog - schemalos, anwendbar auf in memory collections
+** some: hat eine collection diesen wert der map / des prädikats
+** merge für maps
+** for geht auch mit maps: (for [[k v] mappe])
+** record mit map->Interop
+** thread-first -> ist wörtlich zu nehmen
+   der parameter ist der erste in der folge-funktion
+** (ns ) und (in-ns ) sind sehr gut
+** persistent data structures wg. functional programming
+** keys - reference keys by their name
+(om/build editable person
+                  {:opts {:edit-key :fullname
+                          :on-edit #(on-edit uri %)}})))
+(defn editable [data owner {:keys [edit-key on-edit] :as opts}] 
+...
+** clojurescript+lighttable-trick: namespace renamen
+** lighttable hat konsole für printlns
+** nil?
+** man braucht nicht immer do bei defn
+** defrecord faster, with type, für protokolle gut
+** java (import '[com.hp.hpl.jena.tdb TDBFactory])
+** require mit reload, damit die repl nicht neu gestartet werden muss
+** seq für nil-punning
+** if-let, when-let
+** clojure hin und wieder mit reflection/ warn-on-reflection
+etwa (defn toUp [s] (.toUpperCase s))
+Mit caret string geht es
+** for-macro
+(for [x (range 5)] ['a])
+([a] [a] [a] [a] [a])
+** (/ 1 0)
+ArithmeticException Divide by zero
+(map #(/ 1 %) '(1 2 3 0))
+
+ArithmeticException Divide by zero
+
+Pixie:
+
+(/ 1 0)
+^
+in pixie function 
+
+in pixie/stdlib.pxi at 467:10
+  ([x y] (-div x y))
+
+
+(map #(/ 1 %) '(1 2 3 0))
+<inst pixie.stdlib.ShallowContinuation>
+
+In SBCL:
+
+debugger invoked on a DIVISION-BY-ZERO in thread
+#<THREAD "main thread" RUNNING {10039B65A3}>:
+  arithmetic error DIVISION-BY-ZERO signalled
+Operation was SB-KERNEL::DIVISION, operands (1 0).
+
+** core logic
+finite domain fd
+logic fact
+logic defrel
+logic fresh (var)
+logic everyg
+** Om
+*** cjsbuild laufen lassen
+** Core.typed
+*** def-alias für genaueren map-typ
+* Checkstyle/PMD
+** pmd
+OnlyOneReturn: A method should have only one exit point, and that should be the last statement in the method.
+AvoidLiteralsInIfCondition: Avoid using hard coded literals in conditional statements, declare those as static variables or private members.
+
+CouplingBetweenObjects: This rule counts unique attributes, local variables and return types within an object. A number higher than specified threshold can indicate a high degree of coupling.
+
+DoNotCallSystemExit: Web applications should not call System.exit(), since only the web container or the application server should stop the JVM. This rule also checks for the equivalent call Runtime.getRuntime().exit().
+
+BeanMembersShouldSerialize: If a class is a bean, or is referenced by a bean directly or indirectly it needs to be serializable. Member variables need to be marked as transient, static, or have accessor methods in the class. Marking variables as transient is the safest and easiest modification. Accessor methods should follow the Java naming conventions, i.e.if you have a variable foo, you should provide getFoo and setFoo methods.
+MissingSerialVersionUID: Classes that are serializable should provide a serialVersionUID field.
+SystemPrintln: System.(out|err).print is used, consider using a logger.
+LocalVariableCouldBeFinal: A local variable assigned only once can be declared final.
+UseArraysAsList: The java.util.Arrays class has a "asList" method that should be used when you want to create a new List from an array of objects. It is faster than executing a loop to copy all the elements of the array one by one
+UseEqualsToCompareStrings: Using '==' or '!=' to compare strings only works if intern version is used on both sides
+
+CyclomaticComplexity
+** pmd2:
+change
+<rule ref="rulesets/basic.xml" />
+TO
+
+<rule ref="rulesets/java/basic.xml" />
+** methodenlänge
+** parse java
+http://sourceforge.net/projects/pmd/files/pmd/4.2.6/pmd-bin-4.2.6.zip/download
+designer.sh
+** mandatory else
+* Soap-Ui
+** nächsten Request schon im vorigen Request-Fenster bearbeiten und dann copy&paste
+* Javatips
+** Mehr eigene Klassen nutzen/smart constructor, etwa für Strings bestimmter länge?
+* Quartz
+Exceptions fangen

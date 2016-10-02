@@ -1,0 +1,10 @@
+{
+     provideOldHaskellAttributeNames = true;
+  
+     packageOverrides = super: let self = super.pkgs; in
+     {
+       haskellEnv = self.haskellngPackages.ghcWithPackages (p: with p; [
+         regexBase regexPcre regexPosix HTTP yesod text persistent persistentSqlite persistentPostgresql transformersBase resourcet monadLogger idris xmonad ghc cabalInstall
+       ]);
+     };
+   }

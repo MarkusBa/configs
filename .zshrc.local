@@ -1,0 +1,117 @@
+#PATH=${PATH}:${HOME}/bin
+#: depending on which "bin" you want to give higher priority
+#PATH=${PATH}:/usr/local/lib/play2
+PATH=${PATH}:~/.cabal/bin
+PATH=${PATH}:~/.gem/ruby/2.2.0/bin
+
+export EDITOR="emacs -nw"
+
+
+#export JENAROOT=/home/markus/jena/jena/apache-jena
+export HISTFILESIZE=1000000000000
+export HISTSIZE=1000000000000000
+export SWT_GTK3=0
+
+#PATH=${PATH}:/home/markus/.cabal/bin
+#PATH=$JENAROOT/bin:$PATH
+PATH=${PATH}:${HOME}/bin
+export PATH # for good measure
+#export CLOJURESCRIPT_HOME=/home/markus/clojurescript
+#export JAVA_OPTS="-Xms1536m -Xmx2000m -XX:NewSize=256m -XX:MaxNewSize=256m -XX:PermSize=256m -XX:MaxPermSize=256m -XX:+DisableExplicitGC"
+#export JAVA_OPTS="-Xms500m -Xmx1000m" 
+
+#export JAVA_HOME=/nix/store/j9zqa1apb8rwsnl5mhvhxcb18cmgxnlk-oraclejdk-8u45
+
+function cd() {
+    new_directory="$*";
+        if [ $# -eq 0 ]; then 
+                  new_directory=${HOME};
+        fi;
+        builtin cd "${new_directory}" && ls
+}
+
+alias cp='cp -r'
+
+alias l.='ls -d .* --color=auto'
+alias la="ls -aF"
+
+## get rid of command not found ##
+alias cd..='cd ..'
+ 
+## a quick way to get out of current directory ##
+alias ..='cd ..'
+alias ...='cd ../../../'
+alias ....='cd ../../../../'
+alias .....='cd ../../../../'
+alias .4='cd ../../../../'
+alias .5='cd ../../../../..'
+
+
+alias mkdir='mkdir -pv'
+# install  colordiff package :)
+alias diff='colordiff'
+
+alias mount='mount |column -t'
+
+# handy short cuts #
+alias h='history'
+alias j='jobs -l'
+
+alias path='echo -e ${PATH//:/\\n}'
+alias now='date +"%T'
+alias nowtime=now
+alias nowdate='date +"%d-%m-%Y"'
+
+alias vi=vim
+#alias vim=nvim
+alias svi='sudo vi'
+alias vis='vim "+set si"'
+alias edit='vim'
+
+alias update='sudo apt-get update && sudo apt-get upgrade'
+alias wget='wget -c'
+
+alias gpm="git push origin master"
+alias gcm="git commit -m "
+alias gaa="git add -A"
+
+alias nn="nix-env -qaP"
+
+# ff:  to find a file under the current directory
+ff () { /usr/bin/find . -name "$@" ; }
+# ffs: to find a file whose name starts with a given string
+ffs () { /usr/bin/find . -name "$@"'*' ; }
+# ffe: to find a file whose name ends with a given string
+ffe () { /usr/bin/find . -name '*'"$@" ; }
+
+# grepfind: to grep through files found by find, e.g. grepf pattern '*.c'
+# note that 'grep -r pattern dir_name' is an alternative if want all files 
+grepfind () { find . -type f -name "$2" -print0 | xargs -0 grep "$1" ; }
+# I often can't recall what I named this alias, so make it work either way: 
+alias findgrep='grepfind'
+
+#alias pstree='/sw/bin/pstree -g 2 -w'
+#/home/markus/guake-colors-solarized/set_light.sh
+
+alias fregec='java -Xss1m -jar fregec.jar -d build'
+alias frege='java -Xss1m -cp build:fregec.jar'
+
+#test for haskell
+export NIX_GHC_VERSION=$(ghc --numeric-version)
+export NIX_GHC="$HOME/.nix-profile/bin/ghc"
+export NIX_GHCPKG="$HOME/.nix-profile/bin/ghc-pkg"
+export NIX_GHC_DOCDIR="$HOME/.nix-profile/share/doc/ghc/html"
+export NIX_GHC_LIBDIR="$HOME/.nix-profile/lib/ghc-${NIX_GHC_VERSION}"
+
+#GEM_HOME=/home/markus/.gemstore
+
+alias hh='nix-env -qaP -A nixos.pkgs.haskellPackages'
+
+#if type >/dev/null 2>&1 -p ghc; then
+#  eval "$(egrep ^export "$(type -p ghc)")"
+#fi
+export JAVA_HOME=/usr/lib/jvm/default-runtime
+export CATALINA_HOME=/home/markus/local/tomcat
+
+# OPAM configuration
+. /home/markus/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true

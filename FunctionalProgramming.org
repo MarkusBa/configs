@@ -1,0 +1,636 @@
+* Pro/Con Nixos
+** Pro
+   stabil
+   rollbacks
+   pakete für emacs etc.
+** Con
+   waiting for ...
+   man kann nicht einfach dinge bauen
+   outdated
+   kleinere bugs (emacs,leksah,mysqlworkbench)
+   shell scripts
+* Purescript
+** lift liftet in die monad (monad transformers)
+** readfile = bind
+** psci -m für multiline
+** Free wrappt functor, a is the remainder of computation
+** Phantomtypes nur zur compile time
+** Reader und State sehr ähnlich, Reader kann state ändern. State shared state und Reader nicht?
+** Reader r a   (r ist interner State, a ist das Resultat)
+** evalState gibt den Rückgabewert der Funktion zurück, execState den State der Side Effecting Function
+** print-parsers -> prism für strings
+** preview und review um den baum herab und herauf zu gehen
+** prism = lens for sum types
+** <> for string concat
+** ^? like view for prism
+** ^. is view in infix, .~ set and %~ over
+** <> Monoid operation
+** brainstorming
+https://github.com/slamdata/purescript-halogen
+https://github.com/zrho/purescript-optic-ui/blob/master/examples/todo/src/Main.purs
+https://github.com/zrho/purescript-optic-ui/blob/master/examples/ajax/src/Main.purs
+http://blog.brakmic.com/webapps-with-purescript-and-ractivejs/
+** version changes
+import Data.Maybe (Maybe(..))
+The return alias has been removed. Use pure instead
+The (++) alias for append has been removed. Use <> instead.
+print was removed from Control.Monad.Eff.Console, and renamed to logShow
+
+** installation - probleme
+npm install <tools> (etwa gulp)
+bower i <paket> --save 
+
+problem - die pakete können veraltet sein und nicht mehr kompilieren
+** purescript optic ui
+** <<< function composition (different from $)
+** grundsätzlich <$> und so
+(type connection)
+Applicative and Monad - page 103 (purescript-buch)
+<*> = combine/apply (applyMaybe)
+<$> = apply
+https://github.com/bodil/post-frp
+purescript halogen, signal, purescript-signal-loop, purescript-thermite
+https://github.com/Frege/frege-native-gen
+https://github.com/trilogysci/FregeAndroid/blob/master/src/frege/android/database/sqlite/SQLiteOpenHelper.fr
+http://dierk.github.io/FregeGoodness/html/index.html#_the_dollar_sign
+** halogen
+** functions of two arguments = applicative
+** ap
+   monadische funktion, etwa array von funktionen
+
+   Just (1+) <*> Just 3
+   
+** cont
+forall eff. Fn3 FilePath
+(String -> Eff (fs :: FS | eff) Unit)
+(ErrorCode -> Eff (fs :: FS | eff) Unit)
+(Eff (fs :: FS | eff) Unit)
+This type signature indicates that readFileImpl takes three arguments: a file path, a success callback and an
+error callback, and returns an effectful computation which returns an empty ( Unit ) result. Notice that the
+callbacks themselves are given types which use the Eff monad to track their effects.
+** Fragen:
+   Ist die Reihenfolge wichtig bei data Konstruktoren in Haskell?
+   Scheinbar
+** Alternative 
+When we covered array comprehensions earlier in the book, we introduced the guard function, which could
+be used to filter out unwanted results. In fact, the guard function is more general, and can be used for any
+monad which is an instance of MonadPlus :
+** verwendung von lift / nicht verwendung
+Fortunately, as we will see, we can use the automatic code generation provided by type class inference to do
+most of this “heavy lifting” for us.
+
+In particular, there are instances of MonadState for the WriterT , ReaderT and ErrorT monad transformers,
+provided in the purescript-transformers package. In practice, this means that as long as StateT appears
+somewhere in the monad transformer stack, and everything above StateT is an instance of MonadState , then
+we are free to use get , put and modify directly, without the need to use lift .
+** monad transformer stacks
+let runParser p s = runIdentity $ runErrorT $ runWriterT $ runStateT p s
+
+Note that we have to remove the side-effects in the order in which they appear in the monad transformer stack:
+first we use runStateT to remove the StateT type constructor, then runWriterT , then runErrorT . Finally, we
+run the computation in the Identity monad by using runIdentity .
+** ErrorT
+The throwError action can be used to indicate failure, just like Left in the Either e monad.
+** monad transformers
+We can use the actions of the outer StateT String monad ( get , put , and modify ) directly, but in order to
+use the effects of the wrapped monad ( Either String ), we need to “lift” them over the monad transformer.
+The Control.Monad.Trans module defines the MonadTrans type class, which captures those type constructors
+which are monad transformers, as follows:
+** runST
+simulate' :: Number -> Number -> Number -> Number
+simulate' x0 v0 time = runPure (runST (simulate x0 v0 time))
+** ST Effect
+Note that even though this function uses mutable state, it is still a pure function, so long as the reference cell
+ref is not allowed to be used by other parts of the program. We will see that this is exactly what the ST effect
+disallows.
+** handler
+   verarbeiten effekte, actions produzieren sie
+** typen von effekten deklarieren
+main :: Eff (trace :: Trace, random :: Random) Unit
+main = do
+n <- random
+print n
+** eff
+So Eff is parameterised by a row of effects, and its return type. That is, the first argument to Eff is an
+unordered, labelled set of effect types, and the second argument is the return type.
+** stateT
+:k StateT String (Either String) Number
+** control side effects
+Type annotations are usually not required when using Eff , since rows of effects can be inferred, but they can
+be used to indicate to the compiler which effects are expected in a computation.
+If we annotate the previous example with a closed row of effects:
+main :: Eff (trace :: Trace, random :: Random) Unit
+main = do
+n <- random
+print n
+(note the lack of the row variable eff here), then we cannot accidentally include a subcomputation which
+makes use of a different type of effect. In this way, we can control the side-effects that our code is allowed to
+have.
+** effects
+! is the kind of effects, which represents type-level labels for different types of side-effects. To understand
+this, note that the two labels we saw in main above both have kind ! :
+> :k Debug.Trace.Trace
+!
+> :k Control.Monad.Eff.Random.Random
+!
+The # kind constructor is used to construct kinds for rows, i.e. unordered, labelled sets.
+** do notation
+Do notation allows the second computation to depend on the result prof of the first, and the third computation
+to depend on the result addr of the second, and so on. This dependence on previous values is not possible using
+only the interface of the Applicative type class.
+
+Try writing userCity using only pure and <*> : you will see that it is impossible. Applicatives only allow us
+to lift function arguments which are independent of each other, but monads allow us to write computations
+which involve more interesting data dependencies.
+
+In the last chapter, we saw that the Applicative type class can be used to express parallelism. This was
+precisely because the function arguments being lifted were independent of one another. Since the Monad type
+class allows computations to depend on the results of previous computations, the same does not apply - a
+monad has to combine its side-effects in sequence.
+** Extensible Effects Idee
+Similarly, the type of main above can be interpreted as follows: “ main is a computation with side-effects, which
+can be run in any environment which supports random number generation and console IO, and any other
+types of side effect, and which returns a value of type Unit ”.
+This is the origin of the name “extensible effects”: we can always extend the set of side-effects, as long as we
+can support the set of effects that we need.
+** *>
+nonEmpty :: String -> Either String Unit
+nonEmpty "" = Left "Field cannot be empty"
+nonEmpty _ = Right unit
+validatePerson :: Person -> Either String Person
+validatePerson (Person o) =
+person <$> (nonEmpty o.firstName *> pure o.firstName)
+<*> (nonEmpty o.lastName *> pure o.lastName)
+<*> pure o.address
+<*> pure o.phones
+** Either
+let (<?>) Nothing err = Left err
+(<?>) (Just a) _ = Right a
+
+let fullNameEither first middle last =
+fullName <$> (first <?> "First name was missing")
+<*> (middle <?> "Middle name was missing")
+<*> (last
+<?> "Last name was missing")
+** applicative -> wenn nicht alles da ist, dann bspw. nothing
+lift3 address (Just "123 Fake St.") Nothing (Just "CA")
+Nothing
+
+lift3 steht für lift mit 3 argumenten!!!
+** super (type) classes
+** TypeClass mit 0 arguments
+   um funktionen zu annotieren oder so für partial also nicht ausführbar
+** genau eine type class instance für data T = T bspw. nötig
+** type Annotations
+threeAreEqual :: forall a. (Eq a) => a -> a -> a -> Boolean
+threeAreEqual a1 a2 a3 = a1 == a2 && a2 == a3
+** foldMap
+   fold mit dem leeren Element auf einen Monoid
+** Monoid 
+   type class mit mempty
+   Foldable
+   erlaubt fold
+   
+** newtype
+Newtypes must define exactly one constructor, and that constructor must take exactly one argument. That
+is, a newtype gives a new name to an existing type. In fact, the values of a newtype have the same runtime
+representation as the underlying type. They are, however, distinct from the point of view of the type system.
+This gives an extra layer of type safety.
+** ADT
+data Shape
+= Circle Point Number
+| Rectangle Point Number Number
+| Line Point Point
+| Text Point Strin
+** case expressions
+
+** Named Patterns mit @
+** guard 2
+gcd
+gcd
+gcd
+gcd
+gcd
+:: Number -> Number -> Number
+n 0 = n
+0 n = n
+n m | n > m = gcd (n - m) m
+n m
+= gcd n (m - n)
+** fold-right
+The main benefit of fold-right in languages like haskell is that it can actually short-circuit. If we do foldr (&&) True [False, True, True, True, True] the way that it actually gets evaluated is very enlightening. The only thing it needs to evaluate is the function and with 1 argument (the first False). Once it gets there it knows the answer and does not need to evaluate ANY of the Trues.
+** restrictions
+:t foldl
+forall a b f. (Foldable f) => (b -> a -> b) -> b -> f a -> b
+
+:t foldl
+forall a b. (b -> a -> b) -> b -> [a] -> b
+** guard
+factors :: Number -> [[Number]]
+factors n = do
+i <- range 1 n
+j <- range i n
+guard $ i * j == n
+return [i, j]
+
+That is, if guard is passed an expression which evaluates to true , then it returns an array with a single element.
+If the expression evaluates to false , then its result is empty.
+** monad comprehension
+factors :: Number -> [[Number]]
+factors n = filter (\xs -> product xs == n) $ do
+  i <- 1 .. n
+  j <- i .. n
+  return [i, j]
+** generalization of concatMap >>=
+** concatMap: die funktion produziert arrays
+** assoziativität mit infixl infixr
+** infix 5 .. für präzedenz
+** ` backticks für infix. () für prefix. selbst infix wieder parens
+** $ niedrigere präzedenz
+So ($) takes a function and a value and applies the function to the value.
+But why would we need to use $ instead of regular function application? The reason is that $ is a right-
+associative, low precedence operator. This means that $ allows us to remove sets of parentheses for deeply-
+nested applications.
+** zuerst <$>, dann <*>
+renderDivs $ Person
+<$> areq textField "Name" Nothing
+<*> areq (jqueryDayField def
+{ jdsChangeYear = True -- give a year dropdown
+, jdsYearRange = "1900:-5" -- 1900 till five years ago
+}) "Birthday" Nothing
+<*> aopt textField "Favorite color" Nothing
+<*> areq emailField "Email address" Nothing
+<*> aopt urlField "Website" Nothing
+* Nix
+** inherit ermöglicht die weitergabe von argumenten
+   inherit perl;
+
+   wie 
+
+   perl = perl;
+
+   inherit (xlibs) ... 
+   inheritance from another set
+** default values for attributes
+   nixpkgs ? import <nixpkgs> { }
+** Nix für Haskell
+nixos-rebuild --option binary-caches-parallel-connections 10 
+
+
+*** nixos:
+Hi, first of all, I'm going to assume that you're trying to use Nix (the package manager), and not NixOS (the operative system based on that package manager), since you run on a mac.
+For the installation process you can refer to:
+https://nixos.org/nix/download.html
+Basically, it boils down to:
+1) creating the folder /nix with your user, and running the command at the top of the page I linked.
+2) adding in your .bashrc the five lines posted here:
+http://permalink.gmane.org/gmane.linux.distributions.nixos/15161
+They contain useful environment variable detailing where your system expects to find the compiler, libraries ecc.
+3) moving to the unstable channel, to get the current haskell goodies:
+$ nix-channel --add https://nixos.org/channels/nixos-unstable nixos
+$ nix-channel --remove nixpkgs
+$ nix-channel --update
+So, you have the package manager now, let's switch to haskell things.
+The installation process if you're used to a standard package manager would be to first install ghc, then install cabal-install, then the libraries.
+However, this approach gets in the way when you are trying to do functional builds (as Nix does), because in order to function correctly, ghc is required to know about the installed libraries; but from a functional perspective, for ghc to do so, the libraries should be an input in the construction of ghc; that means ghc can't be built on its own.
+The nix way of doing this installation, (or, at least, one of them), is declaring an environment which contains ghc AND the libraries you'll need.
+So, I prepared for you a gist with the basic installation
+https://gist.github.com/meditans/ab0403725a91eee5b939
+you should put this file under ~/.nixpkgs/config.nix.
+This configuration file instructs nix to build current ghc, cabal-install and some tools so that you have your ide covered. Note that ghci-ng has to be built from source for a Hackage bug. Make sure to correct the source path or comment the line inside haskellEnv. If you want a new package, just write its name at the heading # other packages here.
+Now, for the installation command, issue:
+$ nix-env -iA nixos.pkgs.haskellEnv --option extra-binary-caches http://hydra.nixos.org --option extra-binary-caches http://hydra.cryp.to 
+I know it's a bit long, but the infrastructure that permits this is fairly new, and so you have to specify manually the binary caches, if you want them.
+If you want to read more about this new infrastructure, which is called HaskellNG, go here:
+http://lists.science.uu.nl/pipermail/nix-dev/2015-January/015591.html
+As always, if you need more information, don't esitate to ask :)
+*** cabal-install
+http://www.cse.chalmers.se/~bernardy/nix.html
+http://stackoverflow.com/questions/27968909/how-to-get-cabal-and-nix-work-together
+cabal2nix --shell /home/markus/git/haskell/StockHaskell > shell.nix
+*** nix hängt
+Generally, if getting .narinfo files from cache.nixos.org seems to hang, it's because of (broken) NAT ro
+*** shell
+. /home/markus/.nix-profile/etc/profile.d/nix.sh 
+* Cabal
+** faq - error messages
+https://www.haskell.org/cabal/FAQ.html
+** start
+   cabal sandbox init
+   cabal init
+   cabal install --only-dependencies
+** cabal run
+** http://stackoverflow.com/questions/16285246/how-to-pin-dependencies-in-haskell-apps
+build-depends:
+    cmdargs == 0.10.3
+But specifying one exact version is usually not the best idea, so
+
+build-depends:
+    cmdargs >= 0.8 && < 0.11
+* Category Theory
+** study morphisms
+** yoneda lemma: einbettung in category of sets
+** lists: invariant, action contravariant (Action<Animal> subtype of Action<Cat>), IEnumerable covariant (preserves the inheritance direction)
+** dementsprechend: covariance ist structure preserving!
+** functions can be replaced if they accept more general arguments or if they produce a stricter typed result
+** denote variance of type parameters by out and in or in scala - +
+   out can be only used to get elements out, in only to put elements in
+** java wildcards = bounded existential types List<? extends Animal>, List<? super Animal>
+** liskov substitution principle nicht in smalltalk (submethode shelter akzeptiert nur noch Cats)
+** liftM2 etwa für multiplikation auf Maybe
+* Frege
+** Parser
+Parse beispiel: 
+parseTest
+danach etwa symbol, match, satisfy, manyWhile
+
+** accessors, nondestructive updates
+stdg.{options = opts, sub ← _.{loader}}
+** local function def with let
+** global variables in a monad
+** nanoparsec
+** >> is for chaining, where you throw away the first result (such as several printlns)
+** <*> returns results from both sides <* only from the left and >* only from the right! Parsec
+** either: left is for the error
+** case needs | after the pattern match ?
+* Yesod
+** validerung mittendrin - eigene check funktion
+** after ghc update
+stack setup
+stack --resolver ghc-7.10 setup --reinstall
+anderer resolver und stack install
+** felder, layout
+renderDivs, renderBootstrap, renderTabl
+optionale Felder mit Default
+** yesod forms - kompliziertere, geht siehe select
+** lambda cms instructions
+lambdacms: db neu installieren, ohne nightly, patchen, configs anpassen wie stack install sagt extra-deps: [friendly-time-0.4, lists-0.4.2, list-extras-0.4.1.4  ]
+** yesod - yesod-addRoute, scaffolding, yesod-devel, Handlers für den view
+** selectFirst
+seems to return a Maybe Entity "Key" Person
+
+runDB $ do
+  person <- selectFirst [PersonName ==. "Batman"] []
+  car    <- selectFirst [Carname ==. "SUV"] []
+  let Entity personId _ = case person of
+                            Just info -> infor
+                            Nothing -> error "no such Person"
+  let Entity carId _ = case car of
+                            Just info -> infor
+                            Nothing -> error "no such Car"
+  _ <- insert $ PersonCar personId carId
+** tests
+https://github.com/yesodweb/persistent/blob/master/persistent-test/PersistentTest.hs
+** derivePersistField -> wegen templateHaskell restriction
+** default mit leerzeichen: double quote
+** id von person getrennt
+** ||. !=. usw.
+** Großbuchstabe: unique, jedes wert muss ein feld sein in der entität
+** mkMigrate um bei persistent mehrere Tabellen anzulegen
+* Haskell
+** !! accessor by index
+** profunktor etc
+contravariant functor (predictate, comparator)
+bifunctor (, or either)
+profunctor ->  (or field with checkbox)
+** baut nicht
+At least the following dependencies are missing:
+stack build
+** soap
+rest-soap proxy
+** profunktor - covariant/contravariant
+** turtle
+:set -XOverloadedStrings
+shell "ls" empty
+** leksah: immer weiter installieren und webkitgtk oder so installieren
+** monad join
+** diverses
+hamlet template can only embed another hamlet template
+newIdent generiert ids
+Integer = BigInt
+Int = 32 oder 64 bit
+yesod - handler functions für jede requestmethode
+forms, input style flexibel
+IORef Int - Haskell mutable references...
+Andere Implementation von Monads - join
+** Haskell - obvious code...
+logging effect - viele methoden, umständlich
+** lifting - das resultat der inneren monad auf die äußere transformieren
+** yesod app foundation datatype
+** forM_ [1..50 :: Int] $ \i -> do 
+** scanl ähnlich wie foldl, aber gibt sequence zurück
+** lenses
+fireBreath :: StateT Game IO ()
+fireBreath = do
+    lift $ putStrLn "*rawr*"
+    units.traversed.health -= 3
+
+Conditional traversal
+
+around :: Point -> Double -> Traversal' Unit Unit
+around center radius = filtered (\unit ->
+    (unit^.position.x - center^.x)^2
+  + (unit^.position.y - center^.y)^2
+  < radius^2 )
+Sure I can! Now I can limit the dragon's fire breath to a circular area!
+
+zoom (in on properties)
+retreat :: StateT Game IO ()
+retreat = do
+    lift $ putStrLn "Retreat!"
+    zoom (units.traversed.position) $ do
+        x += 10
+        y += 10
+** , is a constructor of List?
+** Free Monads
+data Free f r = Free (f (Free f r)) | Pure r
+data List a   = Cons  a (List a  )  | Nil
+In other words, we can think of a free monad as just being a list of functors.
+
+data Interaction next =
+    Look Direction (Image -> next)
+  | Fire Direction next             |
+  | ReadLine (String -> next)       |
+  | WriteLine String (Bool -> next) |
+                                                                     
+next is a type
+** Fix
+data Fix f = Fix (f (Fix f))
+It's named Fix because it is "the fixed point of a functor".
+
+** semicolon to separate statements
+** use brackets instead of $
+ see also http://www.haskellforall.com/2015/09/how-to-make-your-haskell-code-more.html
+** pronounce . as after an $ as of
+** runio = instanziierung von monad
+** Rank n types - with continuations you can make use of more expressiveness in your types
+   See ocharles website on rank n extension
+** main = init
+** run
+   runhaskell Main.hs
+** ich kann es einfach nicht bauen...
+
+** Singleton for promoted types
+singleton for promoted types
+** DataKinds
+   können nicht instantiiert werden
+   S Z
+** TypeFamilies für Plus
+** bind
+   sagt wie man weitermacht, wenn man erst den monadischen wert hat
+** foldM
+   sowohl auf arrays als auch in monadic value
+** do notation
+   do value <- someComputation
+      whatToDoNext
+
+   someComputation >>= \value -> whatToDoNext
+** _ = type hole on the right side
+** !Int strictness (schließt lazy aus:http://stackoverflow.com/questions/993112/what-does-the-exclamation-mark-mean-in-a-haskell-declaration )
+** const wenn man statt (+1) eigentlich nur = c haben will
+** outdated RWH
+http://stackoverflow.com/questions/23727768/which-part-of-real-world-haskell-is-now-obsolete-or-considered-bad-practise/23733494#23733494
+** Lenses
+essentially getters and setters
+http://blog.jakubarnold.cz/2014/07/14/lens-tutorial-introduction-part-1.html
+** MonadPlus stärker als Monoid
+** <*> ist ähnlich wie fmap, nur ist die funktion hier selbst ein Functor
+** <$> so ähnlich wie $, genaugenommen <$> = fmap als infix
+** die indirection von haskell nervt. RichHickey hat recht
+** nervige api, aber man hat an alles gedacht
+** class ein bisschen wie protocol
+   
+** yesod wirkt nett, aber beschränkt?
+** jedenfalls ist haskell nicht so leserlich finde ich
+** yesod mit C++ macros
+** anon funk, map
+main = forM_ items $ \item -> TLIO.putStrLn
+[lt|You have #{show $ itemQty item} #{itemName item}.|]
+** funktionen, man wiederholt sich
+add                     :: Integer -> Integer -> Integer
+add x y                 =  x + y
+
+type hint für add
+** !! 0 - access the 0th element of a list
+** data constructors can have the same name as a type...
+* Idris
+** Gedanken zu typen
+Wenn man die Typen nicht versteht, fällt irgendwann alles wie ein Kartenhaus zusammen...
+Typen immer Spezieller nicht unbedingt gut...
+versionierung der pakete
+** %provide - type variables 
+strToType : String -> Type
+strToType "Int" = Int
+strToType _ = Nat
+
+fromFile : String -> IO (Provider Type)
+fromFile fname = do str <- readFile fname
+                    return (Provide (strToType (trim str)))
+We then use the %provide directive:
+
+%provide (T1 : Type) with fromFile "theType"
+
+foo : T1
+foo = 2
+** %language enables an extension
+** %error_handler for better error reports
+functions with type List (TTName, TT) -> List TT -> Err -> Maybe ErrorReport defined with the modifier %error_handler will be registered as error handlers.
+** reflection http://homolo.gy/reflection-in-idris/ - treat the arguments to this function as syntax, not as values
+** parameters - implicit parameters to all functions in block
+** namespaces seem to act as virtual directories when importing (distinguishing name)
+** importing refers to filenames and directories, module declaration seems mostly meaningless apart from Main
+** %access changes the default export keyword
+** public modifier on import - reexport
+** compile
+Idris mit custom.mk kompilieren
+oder make -f FFI
+
+** sig effect
+Several arities...
+
+There are four versions of sig, depending on whether we are interested in the resource type, and whether we are updating the resource. Idris will infer the appropriate version from usage.
+
+NoResourceEffect.sig : Effect -> Type -> Type
+NoUpdateEffect.sig   : Effect -> (ret : Type) ->
+                                 (resource : Type) -> Type
+UpdateEffect.sig     : Effect -> (ret : Type) ->
+                                 (resource_in : Type) ->
+                                 (resource_out : Type) -> Type
+DepUpdateEffect.sig  : Effect -> (ret : Type) ->
+                                 (resource_in : Type) ->
+                                 (resource_out : ret -> Type) -> Type
+** effect
+Effect itself is a type synonym, giving the required type for an effect signature:
+
+Effect : Type
+Effect = (result : Type) ->
+         (input_resource : Type) ->
+         (output_resource : result -> Type) -> Type
+** ! evaluate and implicitly bind: 
+m_add : Maybe Int -> Maybe Int -> Maybe Int
+m_add x y = return (!x + !y)
+** implizite argumente {x:a} x ist Variablenname, a ist die freie Variable
+** anonyme funktionen
+:let muli = \x :Int, y :Int=> x * y
+
+** sigma types
+vec : (n : Nat ** Vect n Int)
+vec = (2 ** [3, 4])
+
+type checker can fill in 
+vec : (n : Nat ** Vect n Int)
+vec = (_ ** [3, 4])
+** with 
+   allows pattern matching on intermediate results
+** So
+  garantiert, dass ein prädikat true ist
+
+data So : Bool -> Type where
+Oh : So True
+
+inBounds : Int -> Int -> Bool
+inBounds x y = x >= 0 && x < 640 && y >= 0 && y < 480
+drawPoint : (x : Int) -> (y : Int) -> So (inBounds x y) -> IO ()
+drawPoint x y p = unsafeDrawPoint x y
+
+** records - one constructor, short hand for accessors, even nested accessors
+record { a->b->c = val } x
+
+record{name->Person->Class = "Peter"}
+** monadplus
+
+Monadic zero,
+
+class Monad m => MonadPlus (m : Type -> Type) where
+mplus : m a -> m a -> m a
+mzero : m a
+** nixos paket bauen snippets
+nix-shell --argstr compiler ghc784
+http://nixos.org/nixpkgs/manual/#users-guide-to-the-haskell-infrastructure
+
+called without required argument ‘cabal’
+https://ocharles.org.uk/blog/posts/2014-02-04-how-i-develop-with-nixos.html
+
+nix-env -f "<nixpkgs>" -iA haskellPackages.ghc haskellPackages.cabal-install
+
+if type >/dev/null 2>&1 -p ghc; then
+  eval "$(egrep ^export "$(type -p ghc)")"
+fi
+export NIX_GHC_VERSION=$(ghc --numeric-version)
+export NIX_GHC="$HOME/.nix-profile/bin/ghc"
+export NIX_GHCPKG="$HOME/.nix-profile/bin/ghc-pkg"
+export NIX_GHC_DOCDIR="$HOME/.nix-profile/share/doc/ghc/html"
+export NIX_GHC_LIBDIR="$HOME/.nix-profile/lib/ghc-${NIX_GHC_VERSION}"
+
+{ stdenv , 
+  nixpkgs ? import <nixpkgs> {} 
+, idris_plain ? nixpkgs.haskellPackages.callPackage ./idris_plain {
+  cabal = nixpkgs.haskellPackages.Cabal_1_22_4_0 // rec { __functor = self: x: mkDerivation x; mkDerivation = stdenv.mkDerivation; };
+  inherit (nixpkgs.haskellPackages) annotatedWlPprint ansiTerminal ansiWlPprint
+  base64Bytestring binary blazeHtml blazeMarkup boehmgc
+  cheapskate deepseq filepath fingertree gmp happy haskeline
+  lens libffi mtl network optparseApplicative parsers safe
+  split text time transformers trifecta unorderedContainers
+  utf8String vector vectorBinaryInstances xml zlib
+  fetchFromGitHub ;}
+}:

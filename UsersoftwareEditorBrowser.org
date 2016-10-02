@@ -1,0 +1,240 @@
+* Spacemacs
+** decrease character size
+(set-face-attribute 'default nil :height 80)
+oder text-style-decrease
+* lighttable
+http://blog.jakubarnold.cz/2014/01/13/light-table-plugin-tutorial.html
+* Vim
+** Ohne bewegungstasten - nur mit suche navigieren
+** Macro recording qx q @x
+** Leader key für custom commands example in vimrc:
+noremap <Leader>W :w !sudo tee % > /dev/null
+\w ->
+
+In spacemacs ist der leader key space!
+** wie in bash: C-w delete word, C-u bis anfang der zeile löschen
+** * Searches for the word under the cursor
+** cw delete until end of word, then insertmode
+** . repeats last change, & last substitution, @:/@@ last ex, ; last search.
+** u undoes the first three, ',' searches in the differnt order
+** f<char> searches forward for the occurence of the char F searches backwords
+** A appends at end of line, I inserts at front
+** O and o for newlines before and after
+** gg und G für anfang und ende
+** x% für x prozent
+** % für vorwärtssuche, ? für rückwärts
+** x löscht zeichen
+** ^ für anfang $ für ende der zeile
+** :%s/text/newtext/g für ersetzungen 
+** daw "delete a word (backwards)" bdw, daw?? 
+** duplicate a line yyp
+** increment and decrement C-a, C-x
+** b start previous, w start next word   
+** 2w next two words 
+** ( beginning ) end of sentence, { } with paragraphs  
+** ^ (Caps-T) und $ (Ctrl-X)^
+** c3w - delete three words and start inserting   
+** j runter k ("z") hoch
+** gUaw wort uppercase
+** >> indent current line!
+   blabla
+   blabla
+** == auto indent current line
+** ctrl-[ (auch ctrl-caps-e) oder >-y
+** C-o  (insert normal mode, i.e. oneshot normal mode
+** C-r0 (insert content of register 0), C-rC-p literal insert (line breaks, indentation)
+** C-r=<Expression><CR> (expression register)
+** R replace mode 
+** Visual Modes v V (C-v auch) , rückgängig mit gleichem kommando
+** o go to other end of highlighted text, gv last visual selection   
+** text object vit <a href="#">one</a>      
+** ex commands for several, potentially disjoint lines!
+** :/<html>/,/<\html>/p    -> prints all 
+** :/<html>/+1,/<\html>/-1p    -> prints all except first/last
+** :.,.+2p . für current line
+** example: sorting
+** W, B moving wordwise (ignoring special chars)
+** think of i as inside and a as around
+** m mark current position with a letter `<char> to go back. In neo 'b' is for `. So `` can be though of going back! 
+** % matching brackets (uaeueaieeiae)
+** D delete till end of line 
+** H top
+** M middle
+** L bottom
+** ( beginning of sentence
+** ) end of sentence
+* emacs
+
+C-x r m - setzt ein bookmark
+C-x r b - geht zu einem bookmark
+C-x r l - listet bookmarks
+
+  m-r 
+c-c c-l history der commandos
+m-n , m-p history bei shell nav / c - up , c -down
+c-x d dired
+occur -> finden und dann alle editieren
+search and replace mit funktion
+m y (cycle kill ring)
+c s backspace tötet zeile
+cua mode : c-x bzw. c-c 2x schnell oder c-s-x c-s-c
+scroll the other window
+emacs customize interface
+Mittendrin hilfe
+m-- negativ c-0 m-0 usw.
+server-start
+emacsclient
+
+meta-< und meta-> zum springen
+c-u geht auch mit zahl
+c-u 8 *
+c space, c-u c space set mark, pop
+Meta-Shift-Backspace kill a line in emacs
+
+c-m neue zeile, c-n, c-p, c-f, c-b
+ersetzen uninteraktiv: replace-string
+** magit
+magit-status
+c für commit
+nochmal c
+C-c C-c
+P/magit-push
+usw.
+** kleinigkeiten
+ctrl up down paragraph jumping
+ctrl l center
+Mehrfaches universal argument! C-u C-u C-x { shrinkt
+** prios in orgmode [#A]
+** emacs code browser ecb
+** enlarge-window-horizontally
+** dired-hide-details-mode
+** Gute tips
+http://www.ast.cam.ac.uk/~vasily/idl/emacs_commands_list.html
+** Anderes fenster "other-window" C-x o
+** (setq ring-bell-function 'ignore)
+** emacs shell: ansi-term für nativ, eshell wenn auf windows
+** erc join channel
+   /join 
+** reload .emacs - m-x load-file
+** email 
+   Put the following in ~/.profile :
+export EMAIL="<EMAIL_ADDRESS>"
+export NAME="<FULL NAME>"
+export SMTPSERVER="smtp.gmail.com"
+For example, if your name is John Smith and your email address is johnsmith@gmail.com:
+export EMAIL="johnsmith@gmail.com"
+export NAME="John Smith"
+export SMTPSERVER="smtp.gmail.com"
+Now put the following in your ~/.gnus file:
+(setq gnus-select-method
+      '(nnimap "gmail"
+	       (nnimap-address "imap.gmail.com")  ; it could also be imap.googlemail.com if that's your server.
+	       (nnimap-server-port "imaps")
+	       (nnimap-stream ssl)))
+
+(setq smtpmail-smtp-service 587
+      gnus-ignored-newsgroups "^to\\.\\|^[0-9. ]+\\( \\|$\\)\\|^[\"]\"[#'()]")
+Put the following in your ~/.authinfo file, replacing <USER> with your email address and replacing <PASSWORD> with your password—or your application-specific password:
+machine imap.gmail.com login <USER> password <PASSWORD> port imaps
+machine smtp.gmail.com login <USER> password <PASSWORD> port 587
+** magit
+   C-c C-c to end editing message after commit
+** save file as root
+C-x C-f
+/su::/path/to/root/file
+** terminal ist besser als shell
+** c k killline
+** c x b <buffername> neuer buffer
+** c x <left> oder <right> wechselt
+** c h a apropos 
+** help-with-tutorial
+** Orgmode-Links
+~/Organisation/unsinn/Pictures/Noch mehr/Me.png]]
+org mode links: bracket bracket ]]
+[[#Später]] bezieht sich auf das entsprechend geschriebene Heading
+** history shell - ctrl-up, ctrl-down
+** rückwärtssuche - alt-r
+** ansi-term bestkompatibelst
+** eshell : ermöglicht dired .
+         und find-file name zum öffnen
+** dired
+ c-x c-f und dann c-d zum öffnen von dired im aktuellen verzeichnis
+ c-x d für dired
+ caret für laufwerk hoch w ("t") 
+ n und p zur navigation mit dired
+ q quits dired
+ d mark for deletion x executes
+ ! guess command
+ multi-file-search
+ dired - i : share directories
+** movement
+emacs - c-m-f c-m-b movement by sexprs
+c-m-d down a list, c-m-u up a list
+c-m-p c-m-n previous next list
+** universal argument c-u space
+* Org-mode
+** org-store-link
+** org-timeline
+** org-deadline
+** meta-shift-enter new todos
+* Atom
+http://www.edsko.net/2015/03/07/vim-to-atom/
+* Gimp
+** Bild kopieren und verschieben
+Bei paste as new Layer/ als neue Ebene wählen
+Werkzeuge / Transformationen / Verschieben
+* Virtualbox vorher
+alle quellen offiziell von der webseite
+iso auch für gasterweiterung
+
+Netzwerkbrücke 
+eth0
+Intel Pro 1000 MT Desktop 82540 EM
+verweigern
+Mac 080027042749
+Kabel verbunden
+
+Host-only Adapter
+Name: nicht ausgewählt
+?? vboxnet0 ??
+
+Intel Pro 1000 MT Server 82545 EM
+Mac 0800272EA457
+Kabel verbunden
+* Git
+** gitolite als gui
+** permissions fehlen für git push - verbindungsprobleme
+** keys
+https://help.github.com/articles/generating-ssh-keys/
+und/oder
+git config --global credential.helper cache
+
+Auch wichtig:
+git-add !!
+** branch hinzufügen
+git remote add origin
+ssh://git@git.usw
+
+git remote set-url origin ssh://git@git.usw
+** in eclipse 
+next screen
+add your branch, remote branch , button all branches , save
+** git stash show, git stash show -p
+** notify
+*** git-notify seems better: https://github.com/jakeonrails/git-notify
+
+***   xfce4-notifyd
+   
+http://askubuntu.com/questions/321884/is-there-a-git-indicator-to-get-notification-on-commit-pull
+** checkout commit, git checkout master danach
+** last date of file changes
+git ls-tree -r --name-only HEAD | while read filename; do
+  echo "$(git log -1 --format="%ad" -- $filename) $filename"
+done
+** git checkout commit nutzen in eclipse, git checkout master
+** git revert several commits
+$ git checkout -f A -- .
+$ git commit -a
+
+oder alternativ
+http://stackoverflow.com/questions/1463340/revert-multiple-git-commits

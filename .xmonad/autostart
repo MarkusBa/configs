@@ -1,0 +1,7 @@
+#!/bin/sh
+
+xmodmap ~/.Xmodmap
+chromium&
+emacs ~/Downloads/Ideen/Ideen.org&
+dolphin&
+
