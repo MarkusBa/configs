@@ -11,6 +11,8 @@
 ** disable formatter here
 ** lochis?
 ** serialization constant automatically
+** maven setting download docs
+** web setting -> jsf
 * Spacemacs
 ** decrease character size
 (set-face-attribute 'default nil :height 80)
