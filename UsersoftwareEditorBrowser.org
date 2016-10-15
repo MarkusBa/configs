@@ -10,6 +10,7 @@
 ** locals final
 ** disable formatter here
 ** lochis?
+** serialization constant automatically
 * Spacemacs
 ** decrease character size
 (set-face-attribute 'default nil :height 80)
