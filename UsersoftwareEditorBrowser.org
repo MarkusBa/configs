@@ -1,3 +1,15 @@
+* Eclipse tips
+** ctrl+b toggle breakpoint
+** alt+up für zeile verschieben
+** first setting in eclipse (background)
+** findbugs all activate
+** jpa persistence.xml not found
+** next editor ctrl e
+** show context menus
+** next sub 
+** locals final
+** disable formatter here
+** lochis?
 * Spacemacs
 ** decrease character size
 (set-face-attribute 'default nil :height 80)

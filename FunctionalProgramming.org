@@ -634,3 +634,6 @@ export NIX_GHC_LIBDIR="$HOME/.nix-profile/lib/ghc-${NIX_GHC_VERSION}"
   utf8String vector vectorBinaryInstances xml zlib
   fetchFromGitHub ;}
 }:
+* Elm
+https://github.com/ronjouch
+https://github.com/elm-lang/elm-platform/issues/115
