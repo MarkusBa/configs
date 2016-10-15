@@ -108,6 +108,8 @@ Meta-Shift-Backspace kill a line in emacs
 
 c-m neue zeile, c-n, c-p, c-f, c-b
 ersetzen uninteraktiv: replace-string
+
+** neotree!
 ** magit
 magit-status
 c für commit
