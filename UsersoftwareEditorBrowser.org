@@ -80,6 +80,8 @@ In spacemacs ist der leader key space!
 ** ) end of sentence
 * emacs
 
+C-h w für keybindings suche
+
 C-x r m - setzt ein bookmark
 C-x r b - geht zu einem bookmark
 C-x r l - listet bookmarks
