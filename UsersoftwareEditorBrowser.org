@@ -1,4 +1,5 @@
 * Eclipse tips
+** anyedit, xtext plugin
 ** ctrl+b toggle breakpoint
 ** alt+up für zeile verschieben
 ** first setting in eclipse (background)
@@ -257,3 +258,5 @@ $ git commit -a
 
 oder alternativ
 http://stackoverflow.com/questions/1463340/revert-multiple-git-commits
+* Chromium
+
