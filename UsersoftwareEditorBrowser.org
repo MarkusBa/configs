@@ -1,4 +1,6 @@
 * Eclipse tips
+** autobuild disable, debug, tomcat einstellungen
+** code recommenders plugin
 ** anyedit, xtext plugin
 ** ctrl+b toggle breakpoint
 ** alt+up für zeile verschieben
