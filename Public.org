@@ -1320,3 +1320,6 @@ swap alt and ctrl
 
 
 
+* Touchpad
+xinput list
+xinput set-prop 12 "Device Enabled" 0
