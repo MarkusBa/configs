@@ -84,6 +84,7 @@ In spacemacs ist der leader key space!
 ** ) end of sentence
 * emacs
 
+
 C-h w für keybindings suche
 
 C-x r m - setzt ein bookmark
@@ -115,6 +116,7 @@ Meta-Shift-Backspace kill a line in emacs
 c-m neue zeile, c-n, c-p, c-f, c-b
 ersetzen uninteraktiv: replace-string
 
+** emacs -nwq file - kein laden des init files
 ** neotree!
 ** magit
 magit-status
